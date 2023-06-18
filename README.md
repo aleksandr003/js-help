@@ -1,3 +1,31 @@
+Снипет упращения написания кода
+
+# Справочник JS на англ: https://devdocs.io/
+
+===
+настройка для prettierrc
+
+prettierrc.json - создаем файл
+
+{
+"printWidth": 100,
+"tabWidth": 2,
+"useTabs": false,
+"semi": true,
+"singleQuote": true,
+"trailingComma": "es5",
+"bracketSpacing": true,
+"jsxBracketSameLine": false,
+"arrowParens": "avoid",
+"proseWrap": "always"
+}
+
+===
+
+нужно для браузеров указывать атрибут <script type="module"> там по умолчанию строгий режим
+
+===
+
 # js-help
 
 ЧИСЛА!!!!!==============================
@@ -167,3 +195,10 @@ console.log(productName.slice(0, productName.length)); // "Repair droid"
 console.log(productName.slice(7, productName.length)); // "droid"
 
 ===
+Методы split() и join()
+Метод indexOf() - найти индекс елемента
+Метод includes() - проверяет есть ли в массиве элемент
+Методы push() и pop(), shift() unshift()
+Метод slice() возвращает новый массив, содержащий копию части исходного массива, не изменяя его
+Метод splice() Удаляет, добавляет и заменяет элементы в произвольном месте массива
+Метод concat() Объединяет два или более массива в один
