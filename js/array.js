@@ -4,6 +4,14 @@
 //   console.log(array[i]);
 // }
 
+// const showAllElems = function (arr) {
+//   for (const elem of arr) {
+//     console.log(elem);
+//   }
+// };
+// const array = ["Audi", "Tesls", "Lexus"];
+// showAllElems(array);
+
 //===========
 
 // const array = ["Audi", "Tesls", "Lexus"];
@@ -27,6 +35,21 @@
 // }
 // console.log(masseg);
 
+// const findCar = function (nameCar, allCars) {
+//   for (const car of allCars) {
+//     if (car === nameCar) {
+//       return "Есть такая машина!";
+//     }
+//   }
+
+//   return "Нет накой машины!";
+// };
+
+// const array = ["Audi", "Tesls", "Lexus"];
+// const nameCar = "Lexus";
+
+// console.log(findCar(nameCar, array));
+
 //==========
 
 // const numbersArray = [1, 2, 5, 3, 12, 555, 34, 39, 34, 56, 9];
@@ -38,6 +61,19 @@
 //   }
 // }
 // console.log(needNum);
+
+// const minNumber = function (array) {
+//   let num = array[0];
+//   for (const elem of array) {
+//     if (elem < num) {
+//       num = elem;
+//     }
+//   }
+//   return num;
+// };
+
+// const numbersArray = [1, 2, 5, 3, 12, 555, 34, -39, 34, 56, 9];
+// console.log(minNumber(numbersArray));
 
 //===========
 
