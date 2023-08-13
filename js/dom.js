@@ -2384,3 +2384,335 @@
 // }
 // let table = createTableByArr(arr);
 // div.appendChild(table);
+
+// Давайте сделаем так, чтобы по клику по первому диву его значение возводилось в квадрат, а по клику по второму диву - в куб.
+
+// Организуем наш код в виде двух модулей:
+// (function () {
+//   const div1 = document.querySelector("#div1");
+//   div1.addEventListener("click", function () {
+//     div1.textContent = div1.textContent * div1.textContent;
+//   });
+// })();
+// (function () {
+//   const div2 = document.querySelector("#div2");
+//   div2.addEventListener("click", function () {
+//     div2.textContent = div2.textContent * div2.textContent * div2.textContent;
+//   });
+// })();
+
+// Передача параметров в модуль через замыкания
+
+// (function () {
+//   let div = document.querySelector("#div");
+//   let btn = document.querySelector("#btn");
+
+//   function func(num) {
+//     return num * num;
+//   }
+
+//   btn.addEventListener("click", function () {
+//     div.textContent = func(div.textContent);
+//   });
+// })();
+
+// (function (selector1, selector2) {
+//   let div = document.querySelector(selector1);
+//   let btn = document.querySelector(selector2);
+
+//   function func(num) {
+//     return num * num;
+//   }
+
+//   btn.addEventListener("click", function () {
+//     div.textContent = func(div.textContent);
+//   });
+// })("#div", "#btn");
+
+// Дана кнопка и три инпута, в которые вводятся числа. По нажатию на кнопку выведите в консоль сумму введенных чисел. Реализуйте задачу с помощью модуля.
+// (function (selector1, selector2, selector3) {
+//   const input1 = document.querySelector(selector1);
+//   const input2 = document.querySelector(selector2);
+//   const button = document.querySelector(selector3);
+
+//   button.addEventListener("click", function () {
+//     return console.log(+input1.value + +input2.value);
+//   });
+// })("#input1", "#input2", "button");
+
+// Передача родительского элемента в модуль через замыкания
+// (function (root) {
+//   let parent = document.querySelector(root);
+
+//   let div1 = parent.querySelector("#div1");
+//   let div2 = parent.querySelector("#div2");
+//   let div3 = parent.querySelector("#div3");
+
+//   let res = parent.querySelector("#res");
+//   let btn = parent.querySelector("#btn");
+
+//   btn.addEventListener("click", function () {
+//     let num1 = Number(div1.textContent);
+//     let num2 = Number(div2.textContent);
+//     let num3 = Number(div3.textContent);
+
+//     res.textContent = num1 + num2 + num3;
+//   });
+// })("#parent");
+
+// Передача настроек модуля через замыкания
+// (function (root, type, amount) {
+//   let parent = document.querySelector(root);
+
+//   for (let i = 1; i <= amount; i++) {
+//     let elem = document.createElement(type);
+//     parent.append(elem);
+//   }
+// })("#parent", "p", 5);
+
+// Давайте передадим параметром модуля наш объект:
+// let config = {
+//   root: "#parent",
+//   type: "p",
+//   amount: 5,
+// };
+// (function (config) {
+//   let parent = document.querySelector(config.root);
+
+//   for (let i = 1; i <= config.amount; i++) {
+//     let elem = document.createElement(config.type);
+//     parent.append(elem);
+//   }
+// })(config);
+
+// Более принято выполнять деструктуризацию объекта с настройками:
+// let config = {
+//   root: "#parent",
+//   type: "p",
+//   amount: 5,
+// };
+
+// (function ({ root, type, amount }) {
+//   let parent = document.querySelector(root);
+
+//   for (let i = 1; i <= amount; i++) {
+//     let elem = document.createElement(type);
+//     parent.append(elem);
+//   }
+// })(config);
+
+// Параметры по умолчанию
+// let config = {
+//   root: "#parent",
+// };
+// (function ({ root, type = "p", amount = 5 }) {
+//   let parent = document.querySelector(root);
+
+//   for (let i = 1; i <= amount; i++) {
+//     let elem = document.createElement(type);
+//     parent.append(elem);
+//   }
+// })(config);
+
+// Экспорт переменных и функций в модулях через замыкания
+// (function () {
+//   let str = "переменная модуля";
+
+//   function func() {
+//     alert("функция модуля");
+//   }
+
+//   window.func = func;
+// })();
+
+// func(); // выведет 'функция модуля'
+// Экспортируйте наружу одну из переменных и две любые функции.
+// (function () {
+//   let str1 = "переменная модуля";
+//   let str2 = "переменная модуля";
+//   let str3 = "переменная модуля";
+
+//   function func1() {
+//     alert("функция модуля");
+//   }
+//   function func2() {
+//     alert("функция модуля");
+//   }
+//   function func3() {
+//     alert("функция модуля");
+//   }
+//   window.str1 = str1;
+//   window.str3 = str3;
+//   window.func1 = func1;
+//   window.func2 = func2;
+// })();
+// func1();
+// func2();
+
+// (function () {
+//   function func1() {
+//     alert("функция модуля");
+//   }
+//   function func2() {
+//     alert("функция модуля");
+//   }
+//   function func3() {
+//     alert("функция модуля");
+//   }
+// })();
+
+// Можно пойти и другим путем. Будем записывать функции в объект сразу при описании функции, вот так:
+
+// (function () {
+//   let module = {};
+
+//   module.func1 = function () {
+//     alert("функция модуля");
+//   };
+//   module.func2 = function () {
+//     alert("функция модуля");
+//   };
+//   module.func3 = function () {
+//     alert("функция модуля");
+//   };
+
+//   window.module = module;
+// })();
+
+// Экспортируйте наружу объект с первыми пятью функциями и первыми двумя переменными.
+// (function () {
+//   let str1 = "переменная модуля";
+//   let str2 = "переменная модуля";
+//   let str3 = "переменная модуля";
+
+//   function func1() {
+//     alert("функция модуля");
+//   }
+//   function func2() {
+//     alert("функция модуля");
+//   }
+//   function func3() {
+//     alert("функция модуля");
+//   }
+//   function func4() {
+//     alert("функция модуля");
+//   }
+//   function func5() {
+//     alert("функция модуля");
+//   }
+
+//   window.module = { func1, func2, func3, func4, func5 };
+// })();
+// module.func3();
+
+// Библиотеки через замыкания
+// function square(num) {
+//   return num ** 2;
+// }
+// function cube(num) {
+//   return num ** 3;
+// }
+// function avg(arr) {
+//   return sum(arr, 1) / arr.length;
+// }
+// function digitsSum(num) {
+//   return sum(String(num).split(""));
+// }
+
+// вспомогательная функция
+// function sum(arr) {
+//   let res = 0;
+
+//   for (let elem of arr) {
+//     res += +elem;
+//   }
+
+//   return res;
+// }
+
+// Давайте оформим наши функции в виде модуля:
+
+// (function () {
+//   function square(num) {
+//     return num ** 2;
+//   }
+//   function cube(num) {
+//     return num ** 3;
+//   }
+//   function avg(arr) {
+//     return sum(arr, 1) / arr.length;
+//   }
+//   function digitsSum(num) {
+//     return sum(String(num).split(""));
+//   }
+
+//   // вспомогательная функция
+//   function sum(arr) {
+//     let res = 0;
+
+//     for (let elem of arr) {
+//       res += +elem;
+//     }
+
+//     return res;
+//   }
+// })();
+
+// А теперь экспортируем все функции, кроме вспомогательной:
+// (function () {
+//   function square(num) {
+//     return num ** 2;
+//   }
+//   function cube(num) {
+//     return num ** 3;
+//   }
+//   function avg(arr) {
+//     return sum(arr, 1) / arr.length;
+//   }
+//   function digitsSum(num) {
+//     return sum(String(num).split(""));
+//   }
+
+//   // вспомогательная функция
+//   function sum(arr) {
+//     let res = 0;
+
+//     for (let elem of arr) {
+//       res += +elem;
+//     }
+
+//     return res;
+//   }
+
+//   window.math = { square, cube, avg, digitsSum };
+// })();
+// console.log(math.cube(5));
+
+// // Оформите этот код в виде модуля. Эспортируйте наружу все функции, кроме вспомогательной.
+// (function () {
+//   function avg1(arr) {
+//     return sum(arr, 1) / arr.length;
+//   }
+
+//   function avg2(arr) {
+//     return sum(arr, 2) / arr.length;
+//   }
+
+//   function avg3(arr) {
+//     return sum(arr, 3) / arr.length;
+//   }
+
+//   // вспомогательная функция
+//   function sum(arr, pow) {
+//     let res = 0;
+
+//     for (let elem of arr) {
+//       res += elem ** pow;
+//     }
+
+//     return res;
+//   }
+//   window.math7 = { avg1, avg2, avg3 };
+// })();
+
+// console.log(math7.avg1([5, 2]));
