@@ -1,3 +1,45 @@
+// function isUnique(str) {
+//   //   let arr = str.split("");
+//   for (let i = 0; i < str.length; i++) {
+//     if (str.indexOf(str[i]) !== i) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+// console.log(isUnique("abc"));
+
+// function isUnique(str) {
+//   return new Set(str).size === str.length;
+// }
+// console.log(isUnique("abcb"));
+
+// const arr1 = [[1], [[[[4]]]], [[7]]];
+
+// function flatter(arr) {
+//   const newArr = [];
+
+//   for (let i = 0; i < arr.length; i++) {
+//     if (Array.isArray(arr[i])) {
+//       let flat = flatter(arr[i]);
+
+//       for (let j = 0; j < flat.length; j++) {
+//         newArr.push(flat[j]);
+//       }
+//     } else {
+//       newArr.push(arr[i]);
+//     }
+//   }
+
+//   return newArr;
+// }
+// console.log(flatter(arr1));
+
+// function removeDubls(str) {
+//   return [...new Set(str)].join("");
+// }
+// console.log(removeDubls("abcaccrt"));
+
 // ============   Level 1;   ==============
 
 // №1
@@ -3352,13 +3394,1188 @@
 
 // №2
 // Сделайте вручную HTML таблицу 8 на 8. По нажатию на кнопку покрасьте каждую четную ячейку в белый цвет, а нечетную - в черный.
+// const button = document.querySelector("button");
+// const tds = document.querySelectorAll("td");
+// button.addEventListener("click", function () {
+//   for (let i = 0; i < tds.length; i++) {
+//     if (i % 2 == 0) {
+//       tds[i].style.backgroundColor = "yellow";
+//     } else {
+//       tds[i].style.backgroundColor = "blue";
+//     }
+//   }
+// });
 
 // №3
 // Напишите код, который выведет на экран таблицу умножения.
+// const table = document.querySelector("table");
+// let num = 1;
+// for (let i = 0; i < 10; i++) {
+//   let x = num;
+//   const tr = document.createElement("tr");
+//   for (let j = 0; j < 10; j++) {
+//     const td = document.createElement("td");
+//     td.textContent = x;
+//     tr.appendChild(td);
+//     x += num;
+//   }
+//   table.appendChild(tr);
+//   num++;
+// }
 
 // №4
 // Даны текстареа, инпут и кнопка. В текстареа вводится текст со словами. В инпут вводится слово. По нажатию на кнопку выведите на экран, сколько раз встречается это слово в веденном тексте.
+// const textarea = document.querySelector("textarea");
+// const input = document.querySelector("input");
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   const arrText = textarea.value.split(" ");
+//   let i = 0;
+//   for (const elem of arrText) {
+//     if (elem.toLowerCase() === input.value.toLowerCase()) {
+//       i++;
+//     }
+//   }
+//   alert(i);
+// });
 
+// Уровень 7.1 задачника JavaScript
+// №1
+// Дана кнопка и список ul, заполненный числами. По клику на кнопку удалите пункт списка, содержащий самое максимальное число.
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   const lis = document.querySelectorAll("li");
+//   const arrElems = func(lis);
+//   const maxNum = Math.max(...arrElems);
+//   const indexMaxNum = arrElems.indexOf(maxNum);
+//   lis[indexMaxNum].remove();
+// });
+// // Вспомогательная функция:
+// function func(arr) {
+//   const newArr = [];
+//   arr.forEach((elem) => {
+//     if (elem) {
+//       newArr.push(Number(elem.textContent));
+//     }
+//   });
+//   return newArr;
+// }
+
+// №2
+// Дан абзац, содержащий текст со словами. Дана также кнопка. По клику на кнопку возьмите каждое слово в свой тег span.
+// const text = document.querySelector("p");
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   const arr = text.textContent.split(" ");
+//   const newArr = [];
+//   for (const elem of arr) {
+//     if (elem.length > 1) {
+//       newArr.push("<span>" + elem + "</span>");
+//     }
+//   }
+//   const str = newArr.join(" ");
+//   text.innerHTML = str;
+// });
+
+// №3
+// Дан абзац, содержащий текст со словами и с дробями вида 1/2. Дана также кнопка. По клику на кнопку возьмите каждую дробь в свой тег span.
+// const text = document.querySelector("p");
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   const arr = text.textContent.replace(/[^a-zа-яё0-9/\s]/gi, "").split(" ");
+//   const newArr = [];
+//   for (const elem of arr) {
+//     if (elem.includes("/")) {
+//       newArr.push("<span>" + elem + "</span>");
+//     } else {
+//       newArr.push(elem);
+//     }
+//   }
+//   const str = newArr.join(" ");
+//   text.innerHTML = str;
+// });
+
+// №4
+// Дана таблица и инпут. В инпут вводится дата рождения юзера в формате год-месяц-день. Выведите в первой колонке все даты рождения юзера, а во второй колонке - соответствующие дни недели.
+
+// №5
+// Напишите программу, которая сформирует следующий массив:
+// [
+// 	[
+// 		[1, 2, 3],
+// 		[1, 2, 3],
+// 		[1, 2, 3],
+// 	],
+// 	[
+// 		[1, 2, 3],
+// 		[1, 2, 3],
+// 		[1, 2, 3],
+// 	],
+// 	[
+// 		[1, 2, 3],
+// 		[1, 2, 3],
+// 		[1, 2, 3],
+// 	],
+// ]
+// const arr = [];
+// for (let i = 0; i < 3; i++) {
+//   arr[i] = [];
+//   for (let j = 0; j < 3; j++) {
+//     arr[i][j] = [];
+//     for (let k = 0; k < 3; k++) {
+//       arr[i][j].push(k + 1);
+//     }
+//   }
+// }
+// console.log(arr);
+
+// Уровень 7.2 задачника JavaScript
+// №1
+// Дан список ul с числами, инпут и кнопка. В инпут вводится число. По клику на кнопку покрасьте в красный цвет li, содержащее введенное число.
+// const items = document.querySelectorAll("li");
+// const input = document.querySelector("input");
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   const arr = [];
+//   items.forEach((elem) => {
+//     arr.push(elem.textContent);
+//   });
+//   const indexNum = arr.indexOf(input.value);
+//   items[indexNum].remove();
+//   input.value = "";
+// });
+
+// №2
+// Дан инпут. В него вводится год. Выведите даты всех пятниц 13-е заданного года в виде списка ul.
+
+// №3
+// Даны чекбоксы, с помощью которых у юзера спрашиваются языки, которые он знает. Дан также абзац. По мере выбора чекбоксов юзером выводите в абзац выбранные языки через запятую.
+// const inputs = document.querySelectorAll("input");
+// const text = document.querySelector("p");
+// let arr = [];
+// for (const input of inputs) {
+//   input.addEventListener("change", function () {
+//     if (this.checked) {
+//       arr.push(this.name);
+//     }
+//     return (text.textContent = arr.join(","));
+//   });
+// }
+
+// №4
+// Напишите программу, которая сформирует следующий массив:
+// [
+// 	['x'],
+// 	['x', 'x'],
+// 	['x', 'x', 'x'],
+// 	['x', 'x', 'x', 'x'],
+// 	['x', 'x', 'x', 'x', 'x'],
+// ]
+// let arr = [];
+// let num = 1;
+// for (let i = 0; i < 5; i++) {
+//   arr[i] = []; // создаем подмассив
+
+//   for (let j = 0; j < num; j++) {
+//     arr[i].push("x"); // заполняем подмассив числами
+//   }
+//   num++;
+//   if (num > 5) {
+//     break;
+//   }
+// }
+// console.log(arr);
+
+// №5
+// Дан следующая верстка:
+// <p>111</p>
+// <p>222</p>
+// <p>333</p>
+// <p>444</p>
+// <p>555</p>
+// Получите содержимое текстов абзацев в виде массива:
+// [
+// 	'111',
+// 	'222',
+// 	'333',
+// 	'444',
+// 	'555',
+// ]
+// const texts = document.querySelectorAll("p");
+// const arr = [];
+// for (let i = 0; i < texts.length; i++) {
+//   arr.push(texts[i].textContent);
+// }
+// console.log(arr);
+
+// Уровень 7.3 задачника JavaScript
+// №1
+// Дан абзац, содержащий текст со словами. Некоторые слова повторяются два раза. По клику на кнопку удалите лишние одинаковые рядом стоящие слова.
+// const text = document.querySelector("p");
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   const arr = text.textContent.split(" ");
+//   const newArr = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] == arr[i + 1]) {
+//       newArr.push(arr[i]);
+//       i++;
+//     } else {
+//       newArr.push(arr[i]);
+//     }
+//   }
+//   text.textContent = newArr.join(" ");
+// });
+
+// №2
+// Сделайте функцию, которая будет возвращать массив, заполненный N случайными числами из заданного диапазона так, чтобы числа не повторялись.
+// function func(min, max, n) {
+//   const arr = [];
+//   for (let i = 0; i < n; i++) {
+//     let randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+//     if (!arr.includes(randomNum)) {
+//       arr.push(randomNum);
+//     } else {
+//       i--;
+//     }
+//   }
+//   return arr;
+// }
+// console.log(func(1, 5, 3));
+
+// №3
+// Дан следующая структура данных:
+// let data = [
+//   {
+//     text: "111",
+//     href: "1.html",
+//   },
+//   {
+//     text: "222",
+//     href: "2.html",
+//   },
+//   {
+//     text: "333",
+//     href: "3.html",
+//   },
+// ];
+// Сформируйте с помощью этих данных следующую верстку:
+// <a href="1.html">111</a>
+// <a href="2.html">222</a>
+// <a href="3.html">222</a>
+//
+// const div = document.querySelector("div");
+// for (const elem of data) {
+//   const a = document.createElement("a");
+//   a.href = elem.href;
+//   a.textContent = elem.text;
+//   div.appendChild(a);
+// }
+
+// Уровень 7.4 задачника JavaScript
+// №1
+// Дан ul. Выведите в него дни текущего месяца. Текущий день, а также выходные, выделите другими цветами.
+
+// №2
+// Дан абзац, содержащий текст со словами. Сделайте так, чтобы по клику на любое слово из этого абзаца, это слово выделялось красным цветом.
+// const text = document.querySelector("p");
+// text.addEventListener("click", function (event) {
+//   if (event.target.tagName === "SPAN") {
+//     event.target.classList.toggle("paints");
+//   } else if (event.target.tagName === "P") {
+//     const arr = text.textContent.split(" ");
+//     const newArr = [];
+//     for (const elem of arr) {
+//       newArr.push("<span>" + elem + "</span>");
+//     }
+//     text.innerHTML = newArr.join(" ");
+//   }
+// });
+
+// №3
+// Дан инпут и кнопка. В него вводится число из четного количества цифр. По клику на кнопку проверьте, что число представляет собой счастливый билет, то есть сумма половины цифр равна сумме второй половине цифр.
+// const button = document.querySelector("button");
+// const input = document.querySelector("input");
+// button.addEventListener("click", function () {
+//   const arr = input.value.split("");
+//   const halfNumber = arr.length / 2;
+//   let sum1 = 0;
+//   let sum2 = 0;
+//   for (let i = 0; i < halfNumber; i++) {
+//     sum1 += Number(arr[i]);
+//   }
+//   for (let i = halfNumber; i < arr.length; i++) {
+//     sum2 += Number(arr[i]);
+//   }
+//   if (sum1 === sum2) {
+//     return console.log(true);
+//   } else {
+//     return console.log(false);
+//   }
+// });
+
+// №4
+// Дан инпут. В него вводится текст. Сделайте так, чтобы в инпут нельзя было ввести больше десяти символов. При превышении количества, символы просто не должны вводиться.
+// const input = document.querySelector("input");
+// input.addEventListener("input", function func() {
+//   let str = input.value;
+//   if (str.length > 10) {
+//     input.value = str.slice(0, 10);
+//   }
+// });
+
+// №5
+// Дан инпут, абзац и кнопка. В инпут вводится число. По нажатию на кнопку сделайте так, чтобы в абзаце начал тикать обратный отсчет от введенного в инпут числа до нуля.
+// const text = document.querySelector("p");
+// const input = document.querySelector("input");
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   let i = Number(input.value);
+//   const Timer = setInterval(function () {
+//     text.textContent = i;
+//     i--;
+//     if (i < 0) {
+//       clearInterval(Timer);
+//     }
+//   }, 1000);
+// });
+
+// №6
+// Напишите программу, которая сформирует следующий массив:
+// [
+// 	[1],
+// 	[1, 2],
+// 	[1, 2, 3],
+// 	[1, 2, 3, 4, 5],
+// 	[1, 2, 3, 4, 5, 6],
+// ]
+// let arr = [];
+// let num = 0;
+// for (let i = 0; i < 5; i++) {
+//   arr[i] = [];
+//   for (let j = 0; j <= num; j++) {
+//     arr[i].push(j + 1);
+//   }
+//   num++;
+//   if (num == 3) {
+//     num++;
+//   }
+// }
+// console.log(arr);
+
+// Уровень 7.5 задачника JavaScript
+// №1
+// Дана кнопка. По клику на кнопку плавно прокрутите окно браузера до самого низа.
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   window.scrollTo({
+//     top: document.body.clientHeight,
+//     left: 0,
+//     behavior: "smooth",
+//   });
+// });
+
+// №2
+// Даны кнопки и дивы. Каждая кнопка соответствует своему диву. Сделайте так, чтобы по первому клику на кнопку открывался ее див, а по второму клику - скрывался.
+// const div1 = document.querySelector(".block1");
+// const div2 = document.querySelector(".block2");
+// const button1 = document.querySelector(".button1");
+// const button2 = document.querySelector(".button2");
+// button1.addEventListener("click", function () {
+//   div1.classList.toggle("hidden");
+// });
+// button2.addEventListener("click", function () {
+//   div2.classList.toggle("hidden");
+// });
+
+// №3
+// Сделайте функцию, которая будет принимать строку на русском языке, а возвращать ее транслит.
+
+// №4
+// Напишите программу, которая сформирует следующий массив:
+// [
+// 	['x', 'x', 'x', 'x', 'x'],
+// 	['x', 'x', 'x', 'x'],
+// 	['x', 'x', 'x'],
+// 	['x', 'x'],
+// 	['x'],
+// ]
+// const arr = [];
+// let num = 5;
+// for (let i = 0; i < 5; i++) {
+//   arr[i] = [];
+//   for (let j = num; j > 0; j--) {
+//     arr[i].push("x");
+//   }
+//   num--;
+// }
+// console.log(arr);
+
+// Уровень 7.6 задачника JavaScript
+// №1
+// На странице через абсолютное позиционирование расположены два дива. По клику на кнопку проверьте, накладываются ли эти дивы друга на друга или нет.
+
+// №2
+// Дана кнопка и ul. По клику на кнопку выведите список всех возможных счастливых билетов. Билет представляет собой строку из шести цифр, может быть с нулями спереди. Билет считается счастливым, если сумма сумма первых трех цифр равна сумме вторых трех цифр.
+// const list = document.querySelector("ul");
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   for (let i = 1; i <= 999999; i++) {
+//     if (func(i)) {
+//       const li = document.createElement("li");
+//       li.textContent = i;
+//       list.appendChild(li);
+//     }
+//   }
+// });
+// // вспомогательная функция:
+// function func(num) {
+//   const arr = String(num).split("");
+//   if (
+//     Number(arr[0]) + Number(arr[1]) + Number(arr[2]) ===
+//     Number(arr[3]) + Number(arr[4]) + Number(arr[5])
+//   ) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// №3
+// Напишите программу, которая сформирует следующий массив:
+// [
+// 	'x',
+// 	'xx',
+// 	'xxx',
+// 	'xxxx',
+// 	'xxxxx',
+// ]
+// const arr = [];
+// let num = 1;
+// for (let i = 0; i < 5; i++) {
+//   const newArr = [];
+//   for (let j = 0; j < num; j++) {
+//     newArr.push("x");
+//   }
+//   arr.push(newArr.join(""));
+//   num++;
+// }
+// console.log(arr);
+
+// №4
+// Дан такой объект:
+// let data = {
+//   2018: {
+//     11: {
+//       29: [1, 2, 3],
+//       30: [4, 5],
+//     },
+//     12: {
+//       30: [6, 7],
+//       31: [8, 9],
+//     },
+//   },
+//   2019: {
+//     12: {
+//       29: [10, 11],
+//       30: [12, 13],
+//       31: [14, 15],
+//     },
+//   },
+// };
+// const arr = [];
+// for (const elem in data) {
+//   for (const elem2 in data[elem]) {
+//     for (const elem3 in data[elem][elem2]) {
+//       for (const elem4 of data[elem][elem2][elem3]) {
+//         arr.push(elem4);
+//       }
+//     }
+//   }
+// }
+// console.log(arr);
+// Запишите все элементы этого объекта в какой-нибудь массив, вот так:
+// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+// Уровень 7.7 задачника JavaScript
+// №1
+// Дан массив с числами. Подсчитайте общее количество цифр 3 во всех числах данного массива.
+// const arr = [1, 34, 3, 25, 634, 55];
+// let sum = 0;
+// for (const num of arr) {
+//   sum += String(num).length;
+// }
+// console.log(sum);
+
+// №2
+// Напишите программу, которая сформирует следующий массив:
+// [
+// 	'1',
+// 	'12',
+// 	'123',
+// 	'1234',
+// 	'12345',
+// ]
+// const arr = [];
+// let x = 1;
+// for (let i = 0; i < 5; i++) {
+//   const newArr = [];
+//   let num = 1;
+//   for (let j = 0; j < x; j++) {
+//     newArr.push(num);
+//     num++;
+//   }
+//   arr.push(String(newArr.join("")));
+//   x++;
+// }
+// console.log(arr);
+
+// №3
+// Дан массив:
+// let affairs = [
+//   {
+//     date: "2019-12-29",
+//     event: "name1",
+//   },
+//   {
+//     date: "2019-12-31",
+//     event: "name2",
+//   },
+//   {
+//     date: "2019-12-29",
+//     event: "name3",
+//   },
+//   {
+//     date: "2019-12-30",
+//     event: "name4",
+//   },
+//   {
+//     date: "2019-12-29",
+//     event: "name5",
+//   },
+//   {
+//     date: "2019-12-31",
+//     event: "name6",
+//   },
+//   {
+//     date: "2019-12-29",
+//     event: "name7",
+//   },
+//   {
+//     date: "2019-12-30",
+//     event: "name8",
+//   },
+//   {
+//     date: "2019-12-30",
+//     event: "name9",
+//   },
+// ];
+// Получите из этого массива уникальные даты, то есть вот так:
+// ['2019-12-29', '2019-12-30', '2019-12-31']
+// const arr = [];
+// for (const obj of affairs) {
+//   for (const elem in obj) {
+//     if (obj[elem].includes("-")) {
+//       arr.push(obj[elem]);
+//     }
+//   }
+// }
+// const newArr = Array.from(new Set(arr));
+// console.log(newArr);
+
+// Уровень 7.8 задачника JavaScript
+// №1
+// Дана кнопка и список ul. По клику на кнопку добавьте в конец каждой li ссылку, по нажатию на которую текст li будет перечеркиваться (но не текст ссылки).
+// const items = document.querySelectorAll("li");
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   for (const item of items) {
+//     const textLi = item.textContent;
+//     item.innerHTML = "<span>" + textLi + "</span>";
+//     const link = document.createElement("a");
+//     link.textContent = "LINK";
+//     link.href = "#";
+//     link.addEventListener("click", function (event) {
+//       event.preventDefault();
+//       this.previousSibling.classList.add("change");
+//     });
+//     item.appendChild(link);
+//   }
+// });
+
+// №2
+// Дан абзац, содержащий текст со словами. Сделайте так, чтобы по клику на любое слово из этого абзаца, это слово меняло порядок своих букв на обратный.
+// const text = document.querySelector("p");
+// text.addEventListener("click", function (event) {
+//   const arr = text.textContent.split(" ");
+//   const newArr = [];
+//   for (const elem of arr) {
+//     newArr.push("<span>" + elem + "</span>");
+//   }
+//   text.innerHTML = newArr.join(" ");
+//   const arr2 = text.textContent.split(" ");
+//   const indexName = arr2.indexOf(event.target.textContent);
+//   let x = arr2[indexName].split("").reverse().join("");
+//   arr2[indexName] = x;
+//   text.innerHTML = arr2.join(" ");
+//   console.log(indexName);
+// });
+
+// №3
+// Дан следующий массив:
+// let users = [
+//   { id: 1, name: "user1", surn: "surn1", age: 30 },
+//   { id: 2, name: "user2", surn: "surn2", age: 31 },
+//   { id: 3, name: "user3", surn: "surn3", age: 32 },
+// ];
+// Выведите элементы этого массива в виде таблицы table так, чтобы каждое поле объекта попало в свой тег td. Сделайте заголовки колонок вашей таблицы.
+// const table = document.querySelector("table");
+// for (const obj of users) {
+//   const tr = document.createElement("tr");
+//   for (const elem in obj) {
+//     const td1 = document.createElement("td");
+//     td1.textContent = elem;
+//     const td2 = document.createElement("td");
+//     td2.textContent = obj[elem];
+//     tr.appendChild(td1);
+//     tr.appendChild(td2);
+//   }
+//   table.appendChild(tr);
+// }
+
+// №4
+// Напишите программу, которая сформирует следующий массив:
+// [
+// 	'1',
+// 	'12',
+// 	'123',
+// 	'1234',
+// 	'12345',
+// 	'1234',
+// 	'123',
+// 	'12',
+// 	'1',
+// ]
+// const arr = [];
+// let num = 1;
+// let num2 = 4;
+// for (let i = 0; i < 5; i++) {
+//   let str = "";
+//   for (let j = 1; j <= num; j++) {
+//     str += j;
+//   }
+//   arr.push(str);
+//   num++;
+// }
+// for (let i = 0; i < 4; i++) {
+//   let str = "";
+//   let x = 1;
+//   for (let j = num2; j > 0; j--) {
+//     str += x;
+//     x++;
+//   }
+//   arr.push(str);
+//   num2--;
+// }
+// console.log(arr);
+
+// Уровень 7.9 задачника JavaScript
+// №1
+// Дан абзац и инпут. В абзаце через пробел написаны слова. В инпут вводится некоторое слово. По потери фокуса проверьте, есть ли такое слово в абзаце, и если нет - добавьте его.
+// const input = document.querySelector("input");
+// const text = document.querySelector("p");
+// input.addEventListener("blur", function () {
+//   const arr = text.textContent.split(" ");
+//   if (!arr.includes(input.value)) {
+//     arr.push(input.value);
+//   }
+//   text.textContent = arr.join(" ");
+//   input.value = "";
+// });
+
+// №2
+// Напишите программу, которая сформирует следующую строку:
+// '-1-12-23-34-45-'
+// let str = "";
+// for (let i = 1; i <= 4; i++) {
+//   str += String(i) + (i + 1) + "-";
+// }
+// str = "-1-" + str;
+// console.log(str);
+
+// №3
+// Напишите программу, которая сформирует следующий массив:
+// [
+// 	12,
+// 	34,
+// 	56,
+// 	78,
+// 	90,
+// ]
+// const arr = [];
+// for (let i = 1; i <= 9; i += 2) {
+//   if (i == 9) {
+//     arr.push(Number(String(i) + 0));
+//   } else {
+//     arr.push(Number(String(i) + (i + 1)));
+//   }
+// }
+// console.log(arr);
+
+// №4
+// Дан следующая верстка:
+// <a href="1.html">111</a>
+// <a href="2.html">222</a>
+// <a href="3.html">222</a>
+// Получите содержимое адресов и текстов ссылок в виде следующей структуры:
+// [
+// 	{
+// 		text: '111',
+// 		href: '1.html',
+// 	},
+// 	{
+// 		text: '222',
+// 		href: '2.html',
+// 	},
+// 	{
+// 		text: '333',
+// 		href: '3.html',
+// 	},
+// ]
+// const links = document.querySelectorAll("a");
+// const arr = [];
+// for (let i = 0; i < 3; i++) {
+//   arr[i] = {
+//     text: links[i].textContent,
+//     href: links[i].href,
+//   };
+// }
+// console.log(arr);
+
+// Уровень 7.10 задачника JavaScript
+// №1
+// Напишите программу, которая сформирует следующую строку:
+// '-x-xx-xxx-xx-x-'
+// const arr = [];
+// let num = 1;
+// let str = "";
+// for (let i = 0; i < 3; i++) {
+//   for (let j = 0; j < num; j++) {
+//     str += "x";
+//   }
+//   arr.push(str);
+// }
+// let num2 = 2;
+// for (let i = 0; i < 2; i++) {
+//   let str2 = "";
+//   for (let j = num2; j > 0; j--) {
+//     str2 += "x";
+//   }
+//   arr.push(str2);
+//   num2--;
+// }
+// const newStr = arr.join("-");
+// console.log(newStr);
+
+// №2
+// Напишите программу, которая сформирует следующую строку:
+// '11 12 13 21 22 23 31 32 33'
+// const arr = [];
+// let num = 1;
+// let num2 = 1;
+// let str = "";
+// for (let i = 1; i < 4; i++) {
+//   if (i < 4) {
+//     arr.push(num + String(i));
+//   }
+//   if (i == 3) {
+//     i = 1;
+//     num++;
+//   }
+//   if (num == 4) {
+//     break;
+//   }
+// }
+// console.log(arr);
+
+// №3
+// Даны дивы с названиями продуктов и ценами. Дан также абзац. Сделайте так, чтобы кликами можно было выбрать несколько продуктов и их суммарная стоимость при этом писалась бы в абзац.
+// const checkboxes = document.querySelectorAll("input");
+// const sumText = document.querySelector("span");
+// let arr = [];
+// for (const input of checkboxes) {
+//   input.addEventListener("change", function () {
+//     let pointElem = arr.indexOf(this.previousElementSibling.textContent);
+//     if (this.checked) {
+//       arr.push(this.previousElementSibling.textContent);
+//     } else {
+//       if (pointElem !== -1) {
+//         arr.splice(pointElem, 1);
+//       }
+//     }
+//     sumText.textContent = sumsArray(arr);
+//   });
+// }
+// // //Help function
+// function sumsArray(arr) {
+//   return arr.reduce(function (sum, elem) {
+//     return sum + Number(parseInt(elem));
+//   }, 0);
+// }
+
+// №4
+// Дана таблица прямоугольного размера с нечетным количеством рядов и колонок. Дана кнопка. По клику на кнопку выделите каким-нибудь цветом центральную ячейку.
+// const button = document.querySelector("button");
+// const table = document.querySelector("table");
+// button.addEventListener("click", function () {
+//   const tr = table.querySelectorAll("tr");
+//   const td = table.querySelectorAll("td");
+//   const rowCenter = Math.floor(td.length / 2);
+//   td[rowCenter].style.backgroundColor = "gold";
+// });
+
+// Уровень 8.1 задачника JavaScript
+// №1
+// Дан массив:
+// [
+// 	[1, 2, 3],
+// 	[1, 2],
+// 	[1, 2, 3, 4, 5],
+// 	[1],
+// 	[1, 2, 3, 4],
+// ]
+// Отсортируйте элементы массива по возрастанию количества элементов в подмассиве.
+// const arr = [[1, 2, 3], [1, 2], [1, 2, 3, 4, 5], [1], [1, 2, 3, 4]];
+// const newArr = [];
+// const resArr = [];
+// for (let i = 0; i < arr.length; i++) {
+//   newArr.push(arr[i].length);
+// }
+// newArr.sort();
+// for (const elem1 of newArr) {
+//   for (const elem2 of arr) {
+//     if (elem2.length == elem1) {
+//       resArr.push(elem2);
+//     }
+//   }
+// }
+// console.log(resArr);
+
+// №2
+// Дан массив:
+// const arr = [
+//   [2, 4, 5],
+//   [1, 2, 3],
+//   [0, 1, 1],
+//   [5, 7, 1],
+// ];
+// Отсортируйте элементы массива по возрастанию суммы элементов подмассива.
+// const newArr = [];
+// for (const elem of arr) {
+//   for (const num of elem) {
+//     newArr.push(num);
+//   }
+// }
+// newArr.sort();
+// const resArr = [];
+// let num = 0;
+// for (let i = 0; i < 4; i++) {
+//   resArr[i] = [];
+//   for (let j = 0; j < 3; j++) {
+//     resArr[i].push(newArr[num]);
+//     num++;
+//   }
+// }
+// console.log(resArr);
+
+// №3
+// Выведите на экран следующую пирамидку:
+// x
+// xx
+// xxx
+// xxxx
+// xxxxx
+// let str = "";
+// for (let i = 0; i < 5; i++) {
+//   str += "x";
+//   console.log(str);
+// }
+
+// Уровень 8.2 задачника JavaScript
+// №1
+// В текстареа вводится текст со словами. По потери фокуса сделайте таблицу, в первой колонке которой будут слова из текста, во второй колонке - количество раз, которое это слово встречается, а в третьей - процентное содержание этого слова в текста.
+// const textarea = document.querySelector("textarea");
+// const table = document.querySelector("table");
+// textarea.addEventListener("blur", function () {
+//   const arr = textarea.value.split(" ");
+//   const obj = makeObj(arr);
+//   const countWord = sumWord(obj);
+//   for (const elem in obj) {
+//     const tr = document.createElement("tr");
+//     const td1 = document.createElement("td");
+//     const td2 = document.createElement("td");
+//     const td3 = document.createElement("td");
+//     td1.textContent = elem;
+//     td2.textContent = obj[elem];
+//     td3.textContent = (Number(obj[elem]) / Number(countWord)) * 100 + "%";
+//     tr.appendChild(td1);
+//     tr.appendChild(td2);
+//     tr.appendChild(td3);
+//     table.appendChild(tr);
+//     console.log((Number(obj[elem]) / Number(countWord)) * 10);
+//   }
+//   console.log(obj);
+// });
+// // help function
+// function makeObj(arr) {
+//   let obj = {};
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr.indexOf(arr[i]) != i) {
+//       obj[arr[i]]++;
+//     } else {
+//       obj[arr[i]] = 1;
+//     }
+//   }
+//   return obj;
+// }
+// // help function
+// function sumWord(obj) {
+//   let sum = 0;
+//   for (const elem in obj) {
+//     sum += Number(obj[elem]);
+//   }
+//   return sum;
+// }
+
+// №2
+// Дан список ul и кнопка. По нажатию на кнопку отсортируйте пункты списка по возрастанию.
+
+// №3
+// Дан массив, подмассивы которого содержат цифры:
+// [
+// 	[1, 2, 3],
+// 	[4, 5, 6],
+// 	[7, 8, 9],
+// ]
+// Слейте элементы этого массива в числа:
+// [123, 456, 789]
+// const arr = [
+//   [1, 2, 3],
+//   [4, 5, 6],
+//   [7, 8, 9],
+// ];
+// const newArr = [];
+// for (const elem of arr) {
+//   newArr.push(Number(elem.join("")));
+// }
+// console.log(newArr);
+
+// №4
+// Выведите на экран следующую пирамидку:
+// xx
+// xxxx
+// xxxxxx
+// xxxxxxxx
+// xxxxxxxxxx
+// let str = "xx";
+// for (let i = 0; i < 5; i++) {
+//   console.log(str);
+//   str += "xx";
+// }
+
+// Уровень 8.3 задачника JavaScript
+// №1
+// Пусть даны чекбоксы, отмеченные и нет. По нажатию на кнопку сделайте так, чтобы все чекбоксы сменили свое состояние.
+// const inputs = document.querySelectorAll("input");
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   for (const input of inputs) {
+//     input.checked = false;
+//   }
+// });
+
+// №2
+// Дан следующий массив:
+// let arr = [1, 2, 3, 4, 5, 6];
+// Дано также число:
+// let num = 3;
+// Добавьте в приведенный массив столько пустых строк, чтобы длина массива стала равна квадрату числа из переменной.
+// let lengthArr = num * num - arr.length;
+// for (let i = 0; i < lengthArr; i++) {
+//   arr.push("");
+// }
+// console.log(arr);
+
+// №3
+// Выведите на экран следующую пирамидку:
+// 111
+// 222
+// 333
+// 444
+// 555
+// 666
+// 777
+// 888
+// 999
+// for (let i = 1; i <= 9; i++) {
+//   let x = "";
+//   for (let j = 0; j < 3; j++) {
+//     x += i;
+//   }
+//   console.log(x);
+// }
+
+// Уровень 8.4 задачника JavaScript
+// №1
+// Дана кнопка и блок с текстом. Текст по высоте не влазит в блок и скрыт. По клику на кнопку распахните блок на всю высоту.
+// const block = document.querySelector(".block");
+// const button = document.querySelector("button");
+// button.addEventListener("click", function func() {
+//   block.style.overflowY = "inherit";
+//   block.style.height = "auto";
+//   button.removeEventListener("click", func);
+//     button.addEventListener("click", func2);
+
+//   function func2() {
+//     block.style.overflowY = "scroll";
+//     block.style.height = "200px";
+//     button.removeEventListener("click", func2);
+//     button.addEventListener("click", func);
+//   }
+// });
+
+// №2
+// Дана строка с текстом. Получите процентное содержание каждого символа текста в виде объекта, в котором ключами будут символы, а значениями - их процентное содержание.
+
+// №3
+// Дан список ul и инпут. По мере ввода текста в инпут оставляйте видимыми только те li, текст которых начинается на текст, введенный в инпут.
+// const input = document.querySelector(".input1");
+// const items = document.querySelectorAll("li");
+// input.addEventListener("input", function () {
+//   let str = input.value;
+//   for (const elem of items) {
+//     console.log(elem.textContent);
+//     if (elem.textContent.includes(str)) {
+//       elem.style.display = "block";
+//     } else {
+//       elem.style.display = "none";
+//     }
+//   }
+// });
+
+// №4
+// Выведите на экран следующую пирамидку:
+// 1
+// 22
+// 333
+// 4444
+// 55555
+// 666666
+// 7777777
+// 88888888
+// 999999999
+// for (let i = 1; i < 10; i++) {
+//   let x = "";
+//   for (let j = 0; j < i; j++) {
+//     x += i;
+//   }
+//   console.log(x);
+// }
+
+// №5
+// Дан список городов и их стран, хранящийся в следующей структуре:
+// let data = [
+//   {
+//     country: "country1",
+//     city: "city11",
+//   },
+//   {
+//     country: "country2",
+//     city: "city21",
+//   },
+//   {
+//     country: "country3",
+//     city: "city31",
+//   },
+//   {
+//     country: "country1",
+//     city: "city12",
+//   },
+//   {
+//     country: "country1",
+//     city: "city13",
+//   },
+//   {
+//     country: "country2",
+//     city: "city22",
+//   },
+//   {
+//     country: "country3",
+//     city: "city31",
+//   },
+// ];
+// Напишите код, которой переделает структуру данных вот в такую:
+// {
+// 	'country1': [
+// 		'city11', 'city12', 'city13',
+// 	],
+// 	'country2': [
+// 		'city21', 'city22'
+// 	],
+// 	'country3': [
+// 		'city31', 'city32'
+// 	],
+// }
+// const arrCountry = [];
+// const arrCity = [];
+// const arr = [];
+// for (const obj of data) {
+//   for (const elem in obj) {
+//     arr.push(obj[elem]);
+//   }
+// }
+// for (let i = 0; i < arr.length; i++) {
+//   if (i % 2 === 0) {
+//     arrCountry.push(arr[i]);
+//   } else {
+//     arrCity.push(arr[i]);
+//   }
+// }
+// const newArrCountry = Array.from(new Set(arrCountry));
+
+// const obj = {};
+// for (const elem of newArrCountry) {
+//   obj[elem] = [];
+//   for (const elem2 of arrCity) {
+//     if (elem[elem.length - 1] === elem2[elem2.length - 2]) {
+//       obj[elem].push(elem2);
+//     }
+//   }
+// }
+// console.log(obj);
+
+// Уровень 8.5 задачника JavaScript
+// №1
+// Дан массив со словами. Выведите слова, начинающиеся на одинаковые буквы в своем отдельном списке ul. Над каждым списком сделайте h2 с названием буквы, для которой сделан список.
+
+// №2
+// Даны три селекта. В первом селекте выведите дни месяца от 1 до 31, во втором - названия месяцев года, а в третьем - года за предыдущие и следующие 10 лет.
+
+// №3
+// Модифицируйте предыдущую задачу так, чтобы по умолчанию в селектах была выбрана текущая дата.
+
+// №4
+// Модифицируйте предыдущую задачу так, чтобы в первом селекте количество дней соответствовало выбранному месяцу и году.
+
+// №5
+// Выведите на экран следующую пирамидку:
+// 1
+// 333
+// 55555
+// 7777777
+// 999999999
+
+//
 //
 //
 // const text = document.querySelector("p");
@@ -3369,45 +4586,3 @@
 // button.addEventListener("click", function () {
 //   //
 // });
-
-// function isUnique(str) {
-//   //   let arr = str.split("");
-//   for (let i = 0; i < str.length; i++) {
-//     if (str.indexOf(str[i]) !== i) {
-//       return false;
-//     }
-//   }
-//   return true;
-// }
-// console.log(isUnique("abc"));
-
-// function isUnique(str) {
-//   return new Set(str).size === str.length;
-// }
-// console.log(isUnique("abcb"));
-
-// const arr1 = [[1], [[[[4]]]], [[7]]];
-
-// function flatter(arr) {
-//   const newArr = [];
-
-//   for (let i = 0; i < arr.length; i++) {
-//     if (Array.isArray(arr[i])) {
-//       let flat = flatter(arr[i]);
-
-//       for (let j = 0; j < flat.length; j++) {
-//         newArr.push(flat[j]);
-//       }
-//     } else {
-//       newArr.push(arr[i]);
-//     }
-//   }
-
-//   return newArr;
-// }
-// console.log(flatter(arr1));
-
-// function removeDubls(str) {
-//   return [...new Set(str)].join("");
-// }
-// console.log(removeDubls("abcaccrt"));

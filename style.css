@@ -1,11 +1,41 @@
+.products {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+}
 .block {
   width: 200px;
   height: 200px;
-  border: 2px solid black;
+  overflow-y: scroll;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid rgb(190, 190, 190);
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px black;
+}
+
+.sumPrice {
+  text-align: center;
+  font-size: 40px;
 }
 
 table td {
-  /* width: 80px;
-  height: 80px; */
+  width: 30px;
+  height: 30px;
   border: 1px solid black;
+}
+
+.paints {
+  color: blue;
+}
+
+.hidden {
+  display: none;
+}
+.change {
+  text-decoration: line-through;
+}
+li {
+  display: none;
 }
