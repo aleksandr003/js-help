@@ -4557,6 +4557,41 @@
 // Уровень 8.5 задачника JavaScript
 // №1
 // Дан массив со словами. Выведите слова, начинающиеся на одинаковые буквы в своем отдельном списке ul. Над каждым списком сделайте h2 с названием буквы, для которой сделан список.
+// const str = document.querySelector("p");
+// function func(text) {
+//   const arr = text.split(" ");
+//   console.log(arr);
+//   const block = document.querySelector(".block-list");
+//   const arrFirstLiterArr = [];
+//   for (const elem of arr) {
+//     arrFirstLiterArr.push(elem[0].toLowerCase());
+//   }
+//   const uniqArrFirstLiter = Array.from(new Set(arrFirstLiterArr));
+//   const obj = {};
+//   for (const uniqName of uniqArrFirstLiter) {
+//     obj[uniqName] = [];
+//     for (const elem of arr) {
+//       if (uniqName === elem[0].toLowerCase()) {
+//         obj[uniqName].push(elem);
+//       }
+//     }
+//   }
+//   for (const elem in obj) {
+//     const box = document.createElement("div");
+//     const title = document.createElement("h2");
+//     title.textContent = elem;
+//     box.appendChild(title);
+//     const list = document.createElement("ul");
+//     box.appendChild(list);
+//     for (const val of obj[elem]) {
+//       const item = document.createElement("li");
+//       item.textContent = val;
+//       list.appendChild(item);
+//     }
+//     block.appendChild(box);
+//   }
+// }
+// func(str.innerHTML);
 
 // №2
 // Даны три селекта. В первом селекте выведите дни месяца от 1 до 31, во втором - названия месяцев года, а в третьем - года за предыдущие и следующие 10 лет.
@@ -4574,6 +4609,1173 @@
 // 55555
 // 7777777
 // 999999999
+// for (let i = 1; i < 10; i += 2) {
+//   let x = "";
+//   for (let j = 0; j < i; j++) {
+//     x += i;
+//   }
+//   console.log(x);
+// }
+
+// Уровень 8.6 задачника JavaScript
+// №1
+// Дан абзац с текстом и кнопка. По клику на кнопку покрасьте каждый символ в случайный цвет так, чтобы у соседних символов были разные цвета.
+// const text = document.querySelector("p");
+// function func(str) {
+//   const arr = str.split("");
+//   let newStr = "";
+//   for (const elem of arr) {
+//     newStr += "<span>" + elem + "</span>";
+//   }
+//   text.innerHTML = newStr;
+//   const spans = document.querySelectorAll("span");
+//   for (let i = 1; i < spans.length; i++) {
+//     let colorX = func2();
+//     spans[0].style.color = func2();
+//     if (
+//       spans[i].style.color !== spans[i - 1].style.color &&
+//       spans[i].style.color !== colorX
+//     ) {
+//       spans[i + 1].style.color = colorX;
+//     } else {
+//       i--;
+//     }
+//   }
+// }
+// func(text.textContent);
+// function func2() {
+//   const colors = ["red", "blue", "yellow"];
+//   const randomNum = Math.floor(Math.random() * (colors.length - 1 - 0 + 1)) + 0;
+//   return colors[randomNum];
+// }
+// console.log(func2());
+
+// №2
+// Дан абзац со словами и инпут. В инпут вводится слово. По клику на кнопку найдите это в абзаце и покрасьте его в красный цвет.
+// const input = document.querySelector("input");
+// const text = document.querySelector("p");
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   const arr = text.textContent.split(" ");
+//   const indexElem = arr.indexOf(input.value);
+//   const val = "<span>" + input.value + "</span>";
+//   if (indexElem !== -1) {
+//     arr.splice(indexElem, 1, val);
+//   }
+//   text.innerHTML = arr.join(" ");
+//   const span = document.querySelector("span");
+//   span.style.color = "red";
+// });
+
+// №3
+// Дано меню со ссылками. Покрасьте в красный цвет ту ссылку, адрес которой совпадает с URL из адресной строки браузера.
+// const bossUrl = window.location.href;
+// const links = document.querySelectorAll("a");
+// for (const link of links) {
+//   if (link.href === bossUrl) {
+//     link.style.color = "red";
+//   }
+// }
+
+// №4
+// Выведите на экран следующую пирамидку:
+// xxxxx
+// xxxx
+// xxx
+// xx
+// x
+// for (let i = 6; i > 0; i--) {
+//   let str = "";
+//   for (let j = 0; j < i; j++) {
+//     str += "x";
+//   }
+//   console.log(str);
+// }
+
+// №5
+// Дан список событий за определенные даты, хранящийся в следующей структуре:
+// let events = [
+//   {
+//     date: "2019-12-29",
+//     event: "name1",
+//   },
+//   {
+//     date: "2019-12-31",
+//     event: "name2",
+//   },
+//   {
+//     date: "2019-12-29",
+//     event: "name3",
+//   },
+//   {
+//     date: "2019-12-30",
+//     event: "name4",
+//   },
+//   {
+//     date: "2019-12-29",
+//     event: "name5",
+//   },
+//   {
+//     date: "2019-12-31",
+//     event: "name6",
+//   },
+//   {
+//     date: "2019-12-29",
+//     event: "name7",
+//   },
+//   {
+//     date: "2019-12-30",
+//     event: "name8",
+//   },
+//   {
+//     date: "2019-12-30",
+//     event: "name9",
+//   },
+// ];
+// Напишите код, которой переделает структуру данных вот в такую:
+// {
+// 	'2019-12-29': ['name1', 'name3', 'name5', 'name7'],
+// 	'2019-12-30': ['name4', 'name8', 'name9'],
+// 	'2019-12-31': ['name2', 'name6'],
+// }
+// const arrDate = [];
+// const fullArr = [];
+// for (const obj of events) {
+//   for (const elem in obj) {
+//     if (obj[elem].includes("-")) {
+//       arrDate.push(obj[elem]);
+//     }
+//     fullArr.push(obj[elem]);
+//   }
+// }
+// const uniqArr = Array.from(new Set(arrDate));
+// const obj = {};
+// for (const date of uniqArr) {
+//   obj[date] = [];
+//   for (let j = 0; j < fullArr.length; j++) {
+//     if (date === fullArr[j]) {
+//       obj[date].push(fullArr[j + 1]);
+//     }
+//   }
+// }
+// console.log(obj);
+
+// Уровень 8.7 задачника JavaScript
+// №1
+// Дано слово. Перемешайте буквы этого слова в случайном порядке.
+// const str = "hello";
+// const array = str.split("");
+// for (let i = 0; i < array.length; i++) {
+//   let randomNum = Math.floor(Math.random() * (array.length - 1 - 0 + 1)) + 0;
+//   [array[i], array[randomNum]] = [array[randomNum], array[i]];
+// }
+// console.log(array.join(""));
+
+// №2
+// Дан инпут, кнопка и список ul. В инпут вводится число. По клику на кнопку выведите список всех возможных вариантов разложения числа на два множителя.
+
+// №3
+// На странице через абсолютное позиционирование расположены дивы, могущие накладываться друг на друга. По клику на любой див сделайте так, чтобы он стал поверх остальных.
+// const blocks = document.querySelectorAll(".block");
+// for (const block of blocks) {
+//   block.addEventListener("click", function () {
+//     let arrIndexes = [];
+//     for (const elem of blocks) {
+//       arrIndexes.push(elem.style.zIndex);
+//     }
+//     let maxIndex = Math.max(...arrIndexes);
+//     this.style.zIndex = maxIndex += 1;
+//   });
+// }
+
+// №4
+// Выведите на экран следующую пирамидку:
+// 999999999
+// 88888888
+// 7777777
+// 666666
+// 55555
+// 4444
+// 333
+// 22
+// 1
+// for (let i = 9; i > 0; i--) {
+//   let str = "";
+//   for (let j = 0; j < i; j++) {
+//     str += i;
+//   }
+//   console.log(str);
+// }
+
+// №5
+// Дан список событий за определенные даты, хранящийся в следующей структуре:
+// let events = {
+//   "2019-12-29": ["name1", "name3", "name5", "name7"],
+//   "2019-12-30": ["name4", "name8", "name9"],
+//   "2019-12-31": ["name2", "name6"],
+// };
+// Напишите код, которой переделает структуру данных вот в такую:
+// let events = [
+// 	{
+// 		date:  '2019-12-29'
+// 		event: 'name1'
+// 	},
+// 	{
+// 		date:  '2019-12-31'
+// 		event: 'name2'
+// 	},
+// 	{
+// 		date:  '2019-12-29'
+// 		event: 'name3'
+// 	},
+// 	{
+// 		date:  '2019-12-30'
+// 		event: 'name4'
+// 	},
+// 	{
+// 		date:  '2019-12-29'
+// 		event: 'name5'
+// 	},
+// 	{
+// 		date:  '2019-12-31'
+// 		event: 'name6'
+// 	},
+// 	{
+// 		date:  '2019-12-29'
+// 		event: 'name7'
+// 	},
+// 	{
+// 		date:  '2019-12-30'
+// 		event: 'name8'
+// 	},
+// 	{
+// 		date:  '2019-12-30'
+// 		event: 'name9'
+// 	},
+// ]
+// const arrLastNums = [];
+// const fullArr = [];
+// for (const key in events) {
+//   for (const elem of events[key]) {
+//     let reverseElem = parseInt(elem.split("").reverse().join(""));
+//     arrLastNums.push(reverseElem);
+//     fullArr.push(key);
+//     fullArr.push(elem);
+//   }
+// }
+// arrLastNums.sort();
+// const events2 = [];
+// for (let i = 0; i < arrLastNums.length; i++) {
+//   events2[i] = {};
+//   for (let j = 1; j < fullArr.length; j += 2) {
+//     if (arrLastNums[i] == parseInt(fullArr[j].split("").reverse().join(""))) {
+//       events2[i].date = [fullArr[j - 1]];
+//       events2[i].event = [fullArr[j]];
+//     }
+//   }
+// }
+// console.log(events2);
+
+// Уровень 8.8 задачника JavaScript
+// №1
+// Даны два селекта. В первом селекте выводятся страны. Сделайте так, чтобы во втором селекте выводились города выбранной страны.
+
+// №2
+// Даны инпут и кнопка. В инпут вводится число. По клику на кнопку, проверьте, является ли это число совершенным.
+//1, 2, 3; их сумма 1 + 2 + 3 равна 6.
+// const input = document.querySelector("input");
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   const arr = [];
+//   for (let i = 1; i < input.value; i++) {
+//     if (input.value % i === 0) {
+//       arr.push(i);
+//     }
+//   }
+
+//   const res = arr.reduce((sum, elem) => {
+//     return sum + Number(elem);
+//   });
+//   if (input.value == res) {
+//     alert("good");
+//   } else {
+//     alert("no");
+//   }
+// });
+
+// №3
+// Дан список событий за определенные месяцы, хранящийся в следующей структуре:
+// let events = [
+//   {
+//     date: "2019-12",
+//     event: "name1",
+//   },
+//   {
+//     date: "2019-12",
+//     event: "name2",
+//   },
+//   {
+//     date: "2019-11",
+//     event: "name3",
+//   },
+//   {
+//     date: "2019-11",
+//     event: "name4",
+//   },
+//   {
+//     date: "2020-10",
+//     event: "name5",
+//   },
+//   {
+//     date: "2020-10",
+//     event: "name6",
+//   },
+//   {
+//     date: "2020-11",
+//     event: "name5",
+//   },
+//   {
+//     date: "2020-11",
+//     event: "name6",
+//   },
+//   {
+//     date: "2020-12",
+//     event: "name7",
+//   },
+//   {
+//     date: "2020-12",
+//     event: "name8",
+//   },
+//   {
+//     date: "2020-12",
+//     event: "name9",
+//   },
+// ];
+
+// Напишите код, которой переделает структуру данных вот в такую:
+// {
+// 	2019: {
+// 		11: [массив событий],
+// 		12: [массив событий],
+// 	}
+// 	2020: {
+// 		10: [массив событий],
+// 		11: [массив событий],
+// 		12: [массив событий],
+// 	}
+// }
+// const fullArr = [];
+// const arr2019 = [];
+// const arr2020 = [];
+// for (const obj of events) {
+//   for (const elem in obj) {
+//     fullArr.push(obj[elem]);
+//   }
+// }
+// console.log(fullArr);
+
+// Уровень 8.9 задачника JavaScript
+// №1
+// Дано меню со ссылками. Сделайте так, чтобы по клику на ссылку меню под ней выпадало подменю.
+// const menuLinks = document.querySelectorAll(".menu__link");
+// for (const link of menuLinks) {
+//   link.addEventListener("click", function (event) {
+//     event.preventDefault();
+//     link.nextElementSibling.classList.toggle("submenu");
+//   });
+// }
+
+// №2
+// Дан абзац со словами и кнопка. По клику на кнопку покрасьте каждое слово в случайный цвет так, чтобы у соседних абзацев были разные цвета.
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   const text = document.querySelector("p");
+//   const arrText = text.textContent.split(" ");
+//   text.innerHTML = "";
+//   for (const elem of arrText) {
+//     const span = document.createElement("span");
+//     span.style.display = "inline-block";
+//     span.style.color = colorRandom();
+//     span.textContent = elem + " ";
+//     text.appendChild(span);
+//   }
+// });
+// function colorRandom() {
+//   let color = "#";
+//   let letters = "0123456789ABCDEF";
+//   for (let i = 0; i < 6; i++) {
+//     color += letters[Math.floor(Math.random() * 16)];
+//   }
+//   return color;
+// }
+
+// №3
+// Дан див. У этого дива есть крестик закрытия. Сделайте так, чтобы по клику на крестик, либо на любое место страницы вне дива, этот див прятался.
+// const block = document.querySelector(".block");
+// const close = document.querySelector(".close");
+// close.addEventListener("click", function () {
+//   this.parentElement.style.display = "none";
+// });
+// document.addEventListener("click", function (event) {
+//   if (event.target !== block && event.target !== close) {
+//     block.style.display = "none";
+//   }
+// });
+
+// №4
+// Дан текстареа и ul. В текстареа вводится текст. Сделайте так, чтобы по нажатию Shift + Enter каждая строка текста добавилась в список в виде отдельного тега li.
+// const textarea = document.querySelector("textarea");
+// const list = document.querySelector("ul");
+// textarea.addEventListener("keydown", function (event) {
+//   if (event.key === "Enter" && event.shiftKey) {
+//     console.log("hello");
+//     const arr = textarea.value.split(" ");
+//     for (const elem of arr) {
+//       const item = document.createElement("li");
+//       item.textContent = elem;
+//       list.appendChild(item);
+//       textarea.value = "";
+//     }
+//   }
+// });
+
+// №5
+// Дан такой список дел за определенную дату:
+// let affairs = {
+//   "2019-12-31": ["массив дел19"],
+//   "2018-11-29": ["массив дел18"],
+//   "2018-11-30": ["массив дел18"],
+//   "2018-12-27": ["массив дел18"],
+//   "2019-12-29": ["массив дел19"],
+//   "2019-12-30": ["массив дел19"],
+//   "2018-12-30": ["массив дел18"],
+//   "2018-12-31": ["массив дел18"],
+// };
+// // Выведите на экран все дела за 2018 год.
+// for (const elem in affairs) {
+//   if (elem.slice(0, 4) == "2018") {
+//     console.log(affairs[elem]);
+//   }
+// }
+
+// Уровень 8.10 задачника JavaScript
+// №1
+// Даны два инпута и кнопка. В инпуты вводятся числа. По клику на кнопку, проверьте, являются ли эти числа дружественными или нет.
+
+// №2
+// Дан некоторый массив:
+// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+// Дана переменная:
+// let n = 3;
+// Превратите этот массив в двухмерный, по n элементов в подмассиве.
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+// const newArr = [];
+// const n = 5;
+// for (let i = 0; i < arr.length; i += n) {
+//   const x = arr.slice(i, i + n);
+//   newArr.push(x);
+// }
+// console.log(newArr);
+
+// №3
+// Дан массив:
+// [
+// 	[1, 2, 3, 4, 5],
+// 	[1, 2, 3],
+// 	[1, 2],
+// ]
+// Добавьте в каждый подмассив столько пустых строк, чтобы количество элементов в каждом подмассиве стало равно количеству элементов в самом длинном подмассиве.
+
+// Уровень 9.1 задачника JavaScript
+// №1
+// Дан текст со знаками препинаний. Получите массив предложений этого текста.
+// const str = "Lorem ipsum dolor. Sit amet? Consectetur.";
+// const arr = str.split(/[!.?]/); регулярные выражения
+// console.log(arr);
+// const resArr = arr.filter((elem) => {
+//   return elem.trim() !== "";
+// });
+// console.log(resArr);
+
+// №2
+// Всем ссылкам, ведующим на чужой сайт, добавьте target="_blank".
+// const links = document.querySelectorAll("a");
+// for (const link of links) {
+//   if (!link.href.includes(".html")) {
+//     link.setAttribute("target", "_blank");
+//   }
+// }
+
+// №3
+// Дана некоторая строка:
+// let str = 'abcde abcde'
+// В переменной хранятся символы:
+// let del = 'abe';
+// Удалите из строки все указанные в переменной символы. В нашем случае должно получится следующее:
+// 'cd cd'
+// let str = "abcde abcde";
+// let del = "abe";
+// const arrStr = str.split(" ");
+// const resStr = [...func(arrStr[0], del), " ", ...func(arrStr[1], del)].join(
+//   " "
+// );
+// console.log(resStr);
+
+// function func(strFull, strDel) {
+//   const array = strFull.split("");
+//   const newArr = [];
+//   for (const elem of array) {
+//     if (!strDel.includes(elem)) {
+//       newArr.push(elem);
+//     }
+//   }
+//   return newArr;
+// }
+
+// Уровень 9.2 задачника JavaScript
+// №1
+// Дан список ul и кнопка. По нажатию на кнопку перемешайте пункты списка в случайном порядке.
+// const items = document.querySelectorAll("li");
+// const arrItem = [];
+// items.forEach((elem) => {
+//   arrItem.push(elem.textContent);
+// });
+// for (let i = arrItem.length - 1; i > 0; i--) {
+//   const j = Math.floor(Math.random() * (i + 1));
+//   [arrItem[i], arrItem[j]] = [arrItem[j], arrItem[i]];
+// }
+// console.log(arrItem);
+// for (let i = 0; i < items.length; i++) {
+//   items[i].textContent = arrItem[i];
+// }
+
+// №2
+// Два числа делятся друг на друга, в результате получается периодическая дробь. Напишите код, который определит период этой дроби.
+
+// №3
+// Дан инпут, абзац и кнопка. В инпут вводится целое число. По нажатию на кнопку выведите в абзац разложение этого числа на простые множители.
+
+// №4
+// Даны два инпута и кнопка. По клику на кнопку выведите список список ul всех простых чисел из промежутка, заданном значениями инпутов.
+// const list = document.querySelector("ul");
+// const inputs = document.querySelectorAll("input");
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   const minNam = Number(inputs[0].value);
+//   const maxNam = Number(inputs[1].value);
+//   console.log(minNam);
+//   console.log(maxNam);
+//   for (let i = minNam; i <= maxNam; i++) {
+//     if (func(i)) {
+//       const item = document.createElement("li");
+//       item.textContent = i;
+//       list.appendChild(item);
+//     }
+//   }
+// });
+// function func(num) {
+//   for (let i = 2; i < num; i++) {
+//     if (num % i === 0) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+// Уровень 9.3 задачника JavaScript
+// №1
+// Дан массив со словами. Получите из этого массива случайное слово, начинающееся на заданную букву.
+// const text = document.querySelector("p");
+// const arr = text.textContent.split(" ");
+// const liter = "a";
+// const newArr = [];
+// arr.forEach((elem) => {
+//   if (elem[0] == liter) {
+//     newArr.push(elem);
+//   }
+// });
+// const randomNum = Math.floor(Math.random() * (newArr.length - 1 - 0 + 1)) + 0;
+// console.log(newArr[randomNum]);
+
+// №2
+// Пусть у нас есть дата 22.02.2017. В этой дате 4 двойки. Найдите все даты с 4-мя двойками в текущем столетии.
+
+// №3
+// Дан массив с точками:
+// [
+// 	[1, 2], [2, 4], [3, 8], [4, 16], [5, 32]
+// ]
+// Отрисуйте эти точки на графике.
+
+// Уровень 9.4 задачника JavaScript
+// №1
+// Дана таблица. По нажатию на кнопку добавьте в эту таблицу новый ряд.
+// const button = document.querySelector("button");
+// const table = document.querySelector("table");
+// const row = table.rows[0];
+// const columnCount = row.cells.length;
+// console.log(columnCount);
+// button.addEventListener("click", function () {
+//   const tr = document.createElement("tr");
+//   for (let i = 0; i < columnCount; i++) {
+//     const td = document.createElement("td");
+//     td.textContent = "";
+//     tr.appendChild(td);
+//   }
+//   table.appendChild(tr);
+// });
+
+// №2
+// Дана таблица. По нажатию на кнопку добавьте в эту таблицу новую колонку.
+// const button = document.querySelector("button");
+// const table = document.querySelector("table");
+// button.addEventListener("click", function () {
+//   const trs = document.querySelectorAll("tr");
+//   const row = table.rows.length;
+//   for (let i = 0; i < row; i++) {
+//     const td = document.createElement("td");
+//     td.textContent = "";
+//     trs[i].appendChild(td);
+//   }
+// });
+
+// №3
+// Дана таблица. По нажатию на кнопку добавьте в эту таблицу и новый ряд, и новую колонку.
+// const button = document.querySelector("button");
+// const table = document.querySelector("table");
+// button.addEventListener("click", function () {
+//   const row = table.rows[0];
+//   const columnCount = row.cells.length;
+//   const tr = document.createElement("tr");
+//   for (let i = 0; i < columnCount; i++) {
+//     const td = document.createElement("td");
+//     td.textContent = "";
+//     tr.appendChild(td);
+//   }
+//   table.appendChild(tr);
+//   //
+//   //
+//   const trs = document.querySelectorAll("tr");
+//   const rowCount = table.rows.length;
+//   for (let i = 0; i < rowCount; i++) {
+//     const td = document.createElement("td");
+//     td.textContent = "";
+//     trs[i].appendChild(td);
+//   }
+// });
+
+// №4
+// Дана таблица. Сделайте так, чтобы по клику на любую ячейку в ней появлялся инпут для редактирования этой ячейки.
+// const tds = document.querySelectorAll("td");
+// for (const td of tds) {
+//   td.addEventListener("click", function func() {
+//     this.textContent = "";
+//     const input = document.createElement("input");
+//     this.appendChild(input);
+//     td.removeEventListener("click", func);
+//     input.addEventListener("blur", function () {
+//       td.textContent = input.value;
+//       this.remove();
+//     });
+//   });
+// }
+
+// №5
+// Дана таблица и кнопка. По нажатию на кнопку покрасьте в красный цвет случайную ячейку таблицы. Повторное нажатие на кнопку должно закрашивать новую незакрашенную ячейку, пока ячейки не закончатся.
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   const tds = document.querySelectorAll("td");
+//   function func3() {
+//     const arrLength = tds.length - 1;
+//     const randomNam = Math.floor(Math.random() * (arrLength - 0 + 1)) + 0;
+//     if (!tds[randomNam].style.color) {
+//       tds[randomNam].style.color = colorRandom();
+//     } else {
+//       func3();
+//     }
+//   }
+//   func3();
+// });
+// function colorRandom() {
+//   let color = "#";
+//   let letters = "0123456789ABCDEF";
+//   for (let i = 0; i < 6; i++) {
+//     let x = Math.floor(Math.random() * 16);
+//     console.log(x);
+//     color += letters[x];
+//   }
+//   return color;
+// }
+
+// №6
+// Дана таблица и кнопка. Пусть каждое нажатие на кнопку красит в красный цвет следующую по порядку ячейку таблицы.
+// const button = document.querySelector("button");
+// let i = 0;
+// button.addEventListener("click", function func() {
+//   const tds = document.querySelectorAll("td");
+//   tds[i].style.color = "red";
+//   i++;
+//   if (i == tds.length) {
+//     button.removeEventListener("click", func);
+//   }
+// });
+
+// №7
+// Выведите на экран 6 случайных картинок игральных карт.
+
+// Уровень 9.5 задачника JavaScript
+// №1
+// Дан селект и радио кнопочки, количество радио равно количеству пунктов в селекте. Сделайте так, чтобы при выборе пункта в селекте автоматически становилась отмеченной соответствующая радио кнопочка.
+
+// №2
+// Дана таблица. По нажатию на кнопку выделите в таблице красным цветом N случайных ячеек.
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   const tds = document.querySelectorAll("td");
+//   const arrNums = makeArr(0, tds.length);
+//   for (let i = arrNums.length - 1; i > 0; i--) {
+//     const j = Math.floor(Math.random() * (i + 1));
+//     [arrNums[i], arrNums[j]] = [arrNums[j], arrNums[i]];
+//   }
+//   const x = arrNums.length - 1;
+//   const randomNum = Math.floor(Math.random() * (x - 0 + 1)) + 0;
+//   arrNums.splice(0, randomNum);
+//   for (let i = 0; i < tds.length; i++) {
+//     for (let j = 0; j < arrNums.length; j++) {
+//       if (i == arrNums[j]) {
+//         tds[i].style.backgroundColor = "red";
+//       }
+//     }
+//   }
+// });
+// function makeArr(min, max) {
+//   const arr = [];
+//   for (let i = min; i < max; i++) {
+//     arr.push(i);
+//   }
+//   return arr;
+// }
+
+// №3
+// Дан массив:
+// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+// Дан инпут и кнопка. В инпут вводится число. По нажатию на кнопку создайте таблицу, заполненную данными из этого массива, содержащую столько колонок, сколько указано в инпуте.
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+// const input = document.querySelector("input");
+// const table = document.querySelector("table");
+// input.addEventListener("blur", function () {
+//   let k = 0;
+//   const column = Number(input.value);
+//   const row = Math.floor(arr.length / column);
+//   for (let i = 0; i < row; i++) {
+//     const tr = document.createElement("tr");
+//     for (let j = 0; j < column; j++) {
+//       const td = document.createElement("td");
+//       td.textContent = arr[k];
+//       tr.appendChild(td);
+//       k++;
+//     }
+//     table.appendChild(tr);
+//   }
+// });
+
+// №4
+// Сделайте функцию, которая будет устанавливать правильную форму существительного после числа. Вот как должна работать эта функция:
+// func(1, 'яблоко', 'яблока', 'яблок'); // выведет '1 яблоко'
+// func(2, 'яблоко', 'яблока', 'яблок'); // выведет '2 яблока'
+// func(3, 'яблоко', 'яблока', 'яблок'); // выведет '3 яблока'
+// func(4, 'яблоко', 'яблока', 'яблок'); // выведет '4 яблока'
+// func(5, 'яблоко', 'яблока', 'яблок'); // выведет '5 яблок'
+// Вот пример для для двухзначных чисел:
+// func(11, 'яблоко', 'яблока', 'яблок'); // выведет '11 яблок'
+// func(12, 'яблоко', 'яблока', 'яблок'); // выведет '12 яблок'
+// func(21, 'яблоко', 'яблока', 'яблок'); // выведет '21 яблоко'
+// func(23, 'яблоко', 'яблока', 'яблок'); // выведет '23 яблока'
+// Наша функция должна работать для чисел любой длины:
+
+// func(1223421, 'яблоко', 'яблока', 'яблок'); // выведет '1223421 яблоко'
+
+// Уровень 9.6 задачника JavaScript
+// №1
+// Сгенерируйте таблицу, покрашенную в виде шахматной доски.
+// const table = document.querySelector("table");
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   let k = 1;
+//   for (let i = 0; i < 8; i++) {
+//     const tr = document.createElement("tr");
+//     for (let j = 0; j < 8; j++) {
+//       const td = document.createElement("td");
+//       if (k % 2 !== 0) {
+//         td.style.backgroundColor = "white";
+//       } else {
+//         td.style.backgroundColor = "black";
+//       }
+//       tr.appendChild(td);
+//       k++;
+//       if (j === 7) {
+//         k--;
+//       }
+//     }
+//     table.appendChild(tr);
+//   }
+// });
+
+// №2
+// Дана таблица. Сделайте так, чтобы по клику на любую ячейку в нее писался ее порядковый номер в таблице.
+// const tds = document.querySelectorAll("td");
+// for (let i = 0; i < tds.length; i++) {
+//   tds[i].addEventListener("click", function () {
+//     this.textContent = i + 1;
+//   });
+// }
+
+// №3
+// Дана таблица. Сделайте так, чтобы по клику на любую ячейку в нее писался номер ее ряда и колонки в таблице.
+// const tds = document.querySelectorAll("td");
+// for (let i = 0; i < tds.length; i++) {
+//   tds[i].addEventListener("click", function () {
+//     const trs = document.querySelectorAll("tr");
+//     this.textContent = i + 1 + ": " + Math.ceil((i + 1) / trs.length);
+//   });
+// }
+
+// №4
+// Дано пять чебоксов. Сделайте так, чтобы одновременно можно было отметить не более трех из них.
+
+// №5
+// Дан следующий массив:
+// let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+// Из приведенного массива динамически создайте таблицу размером в 5 колонок.
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+// const table = document.querySelector("table");
+// let k = 0;
+// const column = 5;
+// const row = Math.ceil(arr.length / column);
+// for (let i = 0; i < row; i++) {
+//   const tr = document.createElement("tr");
+//   for (let j = 0; j < column; j++) {
+//     const td = document.createElement("td");
+//     td.textContent = arr[k];
+//     tr.appendChild(td);
+//     k++;
+//   }
+//   table.appendChild(tr);
+// }
+
+// Уровень 9.7 задачника JavaScript
+// №1
+// Дана таблица. Сделайте так, чтобы по клику на любую ячейку в красный цвет красился ряд с этой ячейкой.
+// const trs = document.querySelectorAll("tr");
+// for (let i = 0; i < trs.length; i++) {
+//   const tds = trs[i].querySelectorAll("td");
+//   for (const td of tds) {
+//     td.addEventListener("click", function () {
+//       trs[i].style.backgroundColor = "red";
+//     });
+//   }
+// }
+
+// №2
+// Дана таблица. Сделайте так, чтобы по клику на любую ячейку в красный цвет красилась колонка с этой ячейкой.
+// const trs = document.querySelectorAll("tr");
+// const tds = document.querySelectorAll("td");
+// const row = Math.floor(tds.length / trs.length);
+// let num = 0;
+// console.log(row);
+// for (let i = 0; i < trs.length; i++) {
+//   const tdd = trs[i].querySelectorAll("td");
+//   for (let j = 0; j < row; j++) {
+//     tdd[j].addEventListener("click", function () {
+//       num = j + 1;
+//       console.log(num);
+//       for (let k = num; k <= tds.length; k += row) {
+//         tds[k - 1].style.backgroundColor = "red";
+//       }
+//     });
+//   }
+// }
+
+// №3
+// Дана таблица. Сделайте так, чтобы по клику на любую ячейку удалялся ряд с этой ячейкой.
+// const trs = document.querySelectorAll("tr");
+// for (let i = 0; i < trs.length; i++) {
+//   const tds = trs[i].querySelectorAll("td");
+//   for (const td of tds) {
+//     td.addEventListener("click", function () {
+//       this.parentElement.remove();
+//     });
+//   }
+// }
+
+// №4
+// Дана таблица. Сделайте так, чтобы по клику на любую удалялась колонка с этой ячейкой.
+// const trs = document.querySelectorAll("tr");
+// const tds = document.querySelectorAll("td");
+// const row = Math.floor(tds.length / trs.length);
+// let num = 0;
+// console.log(row);
+// for (let i = 0; i < trs.length; i++) {
+//   const tdd = trs[i].querySelectorAll("td");
+//   for (let j = 0; j < row; j++) {
+//     tdd[j].addEventListener("click", function () {
+//       num = j + 1;
+//       console.log(num);
+//       for (let k = num; k <= tds.length; k += row) {
+//         tds[k - 1].remove();
+//       }
+//     });
+//   }
+// }
+
+// №5
+// Дана таблица и кнопка. По клику на кнопку покрасьте в красный цвет ячейки, расположенные на диагонали таблицы.
+
+// Уровень 9.8 задачника JavaScript
+// №1
+// Дана таблица и кнопка. По клику на кнопку поменяйте местами первый и второй ряд таблицы.
+// const button = document.querySelector("button");
+// const trs = document.querySelectorAll("tr");
+// const tds1 = trs[0].querySelectorAll("td");
+// const tds2 = trs[1].querySelectorAll("td");
+// button.addEventListener("click", function () {
+//   for (let i = 0; i < tds1.length; i++) {
+//     let textTds1 = tds1[i].textContent;
+//     let textTds2 = tds2[i].textContent;
+//     tds1[i].textContent = textTds2;
+//     tds2[i].textContent = textTds1;
+//   }
+// });
+
+// №2
+// Дана таблица и кнопка. По клику на кнопку поменяйте местами первую и вторую колонки таблицы.
+// const button = document.querySelector("button");
+// const trs = document.querySelectorAll("tr");
+// button.addEventListener("click", function () {
+//   for (let i = 0; i < trs.length; i++) {
+//     const tds = trs[i].querySelectorAll("td");
+//     let textTds1 = tds[0].textContent;
+//     let textTds2 = tds[1].textContent;
+//     tds[0].textContent = textTds2;
+//     tds[1].textContent = textTds1;
+//   }
+// });
+
+// const button = document.querySelector("button");
+// const trs = document.querySelectorAll("tr");
+// button.addEventListener("click", function () {
+//   for (let i = 0; i < trs.length; i++) {
+//     const tds1 = trs[i].querySelector("td");
+//     const tds2 = trs[i + 1].querySelector("td");
+//     let textTd1 = tds1[0].textContent;
+//     let textTd2 = tds2[1].textContent;
+//     column1[0].textContent = textTd2;
+//     column2[1].textContent = textTd1;
+//   }
+// });
+
+// №3
+// Дана таблица. По клику на заголовок любой колонки отсортируйте таблицу по значениям ячеек этой колонки.
+
+// №4
+// Дана таблица. Сделайте так, чтобы при кликах на любую яейку таблицы в нее по очереди вставлялись числа 1, 2 и 3.
+// const trs = document.querySelectorAll("tr");
+// let i = 1;
+// for (const tr of trs) {
+//   const tds = tr.querySelectorAll("td");
+//   for (const td of tds) {
+//     td.addEventListener("click", function func() {
+//       td.textContent = i;
+//       i++;
+//       if (i === 4) {
+//         i = 1;
+//       }
+//       td.removeEventListener("click", func);
+//     });
+//   }
+// }
+
+// Уровень 9.9 задачника JavaScript
+// №1
+// Дана таблица. Сделайте так, чтобы по клику на любую ячейку в этой ячейке появлялся порядковый номер клика.
+// const trs = document.querySelectorAll("tr");
+// let i = 1;
+// for (const tr of trs) {
+//   const tds = tr.querySelectorAll("td");
+//   for (const td of tds) {
+//     td.addEventListener("click", function func() {
+//       td.textContent = i;
+//       i++;
+//     });
+//   }
+// }
+
+// №2
+// Дана таблица, заполненная числами по порядку и кнопка. По нажатию на кнопку перемешайте числа в таблице.
+// const button = document.querySelector("button");
+// button.addEventListener("click", function () {
+//   const tds = document.querySelectorAll("td");
+//   const arrTexts = arrGatTextTags(tds);
+//   shuffleArray(arrTexts);
+//   for (let i = 0; i < tds.length; i++) {
+//     tds[i].textContent = arrTexts[i];
+//   }
+// });
+// function arrGatTextTags(tags) {
+//   const arrElems = [];
+//   tags.forEach((elem) => {
+//     arrElems.push(elem.textContent);
+//   });
+//   return arrElems;
+// }
+// function shuffleArray(arr) {
+//   for (let i = arr.length - 1; i > 0; i--) {
+//     const j = Math.floor(Math.random() * (i + 1));
+//     [arr[i], arr[j]] = [arr[j], arr[i]];
+//   }
+// }
+
+// №3
+// Дан текстареа. В него вводится текст. По потери фокуса найдите самый часто используемый символ этого текста и выведите его в абзац.
+// const text = document.querySelector("p");
+// const textarea = document.querySelector("textarea");
+// textarea.addEventListener("blur", function () {
+//   const obj = makeObjFromText(textarea.value);
+//   const arr = arrElemFromObj(obj);
+//   const maxNum = Math.max(...arr);
+//   for (const elem in obj) {
+//     if (obj[elem] === maxNum) {
+//       text.textContent = elem;
+//     }
+//   }
+// });
+// function arrElemFromObj(obj) {
+//   const arr = [];
+//   for (const elem in obj) {
+//     arr.push(Number(obj[elem]));
+//   }
+//   return arr;
+// }
+// function makeObjFromText(text) {
+//   const arr = text.split(" ");
+//   const obj = {};
+//   for (const elem of arr) {
+//     if (obj[elem] > 0) {
+//       obj[elem] += 1;
+//     } else {
+//       obj[elem] = 1;
+//     }
+//   }
+//   return obj;
+// }
+
+// №4
+// Даны инпуты. Поставьте первому инпуту в value число 1, через секунду второму число 2, еще через секунду третьему число 3 и так далее пока инпуты не закончатся. Когда инпуты закончатся продолжите нумерацию с первого инпута.
+// const button = document.querySelector("button");
+// const inputs = document.querySelectorAll("input");
+// button.addEventListener("click", function () {
+//   let i = 0;
+//   let j = 1;
+//   setInterval(function () {
+//     inputs[i].value = j;
+//     i++;
+//     j++;
+//     if (i === inputs.length) {
+//       i = 0;
+//     }
+//   }, 1000);
+// });
+
+// №5
+// Сделайте функцию, которая будет принимать число, а возвращать это число прописью. Пусть функция работает с числами до 999. Смотрите пример:
+// func(123); // выведет 'сто двадцать три'
+
+// Уровень 9.10 задачника JavaScript
+// №1
+// Дана таблица. Юзер кликает по очереди на две ячейки, выделяя их. Сделайте так, чтобы красным цветом выделились все ячейки, расположенные по порядку между теми, на которые кликнул юзер.
+
+// №2
+// Напишите код, который определит максимальный уровень вложенности многомерного массива.
+
+// №3
+// Дан список каких-то данных за определенные даты, хранящийся в следующей структуре:
+// let data = [
+// 	{
+// 		year:  2019,
+// 		month: 11,
+// 		day: 20,
+// 		data: ['массив с данными']
+// 	},
+// 	{
+// 		year:  2019,
+// 		month: 11,
+// 		day: 21,
+// 		data: ['массив с данными']
+// 	},
+// 	{
+// 		year:  2019,
+// 		month: 12,
+// 		day: 25,
+// 		data: ['массив с данными']
+// 	},
+// 	{
+// 		year:  2019,
+// 		month: 12,
+// 		day: 26,
+// 		data: ['массив с данными']
+// 	},
+// 	{
+// 		year:  2020,
+// 		month: 10,
+// 		day: 29,
+// 		data: ['массив с данными']
+// 	},
+// 	{
+// 		year:  2020,
+// 		month: 10,
+// 		day: 30,
+// 		data: ['массив с данными']
+// 	},
+// 	{
+// 		year:  2020,
+// 		month: 11,
+// 		day: 19,
+// 		data: ['массив с данными']
+// 	},
+// 	{
+// 		year:  2020,
+// 		month: 11,
+// 		day: 20,
+// 		data: ['массив с данными']
+// 	},
+// }
+// Напишите код, которой переделает структуру данных в структуру вида:
+// {
+// 	год1: {
+// 		месяц1: {
+// 			день1: [массив данных],
+// 			день2: [массив данных],
+// 			день3: [массив данных],
+// 		}
+// 		месяц2: {
+// 			день1: [массив данных],
+// 			день2: [массив данных],
+// 			день3: [массив данных],
+// 		}
+// 	}
+// 	год2: {
+// 		месяц1: {
+// 			день1: [массив данных],
+// 			день2: [массив данных],
+// 			день3: [массив данных],
+// 		}
+// 		месяц2: {
+// 			день1: [массив данных],
+// 			день2: [массив данных],
+// 			день3: [массив данных],
+// 		}
+// 	}
+// }
 
 //
 //

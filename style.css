@@ -5,15 +5,36 @@
   padding: 40px;
 }
 .block {
+  position: relative;
   width: 200px;
   height: 200px;
-  overflow-y: scroll;
-  text-align: center;
-  padding: 20px;
   border: 1px solid rgb(190, 190, 190);
   border-radius: 20px;
   box-shadow: 5px 5px 5px black;
+  z-index: 1;
 }
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+
+/* .block1 {
+  left: 0;
+  background-color: red;
+}
+.block2 {
+  left: 70px;
+  top: 70px;
+  background-color: orange;
+}
+.block3 {
+  left: 140px;
+  top: 140px;
+  background-color: yellow;
+} */
 
 .sumPrice {
   text-align: center;
@@ -24,6 +45,7 @@ table td {
   width: 30px;
   height: 30px;
   border: 1px solid black;
+  font-weight: bold;
 }
 
 .paints {
@@ -36,6 +58,7 @@ table td {
 .change {
   text-decoration: line-through;
 }
-li {
+
+.submenu {
   display: none;
 }
