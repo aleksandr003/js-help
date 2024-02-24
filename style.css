@@ -12,6 +12,15 @@
   border-radius: 20px;
   box-shadow: 5px 5px 5px black;
   z-index: 1;
+  left: 200px;
+  top: 0;
+  transition: top 1.5s;
+}
+
+.hidden {
+  position: absolute;
+  transition: top 1.5s;
+  top: -30%;
 }
 
 .close {
@@ -46,15 +55,18 @@ table td {
   height: 30px;
   border: 1px solid black;
   font-weight: bold;
+  cursor: pointer;
+  margin: 7px;
+  display: inline-block;
 }
 
 .paints {
   color: blue;
 }
 
-.hidden {
+/* .hidden {
   display: none;
-}
+} */
 .change {
   text-decoration: line-through;
 }

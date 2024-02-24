@@ -8,21 +8,18 @@
 //   return true;
 // }
 // console.log(isUnique("abc"));
-
 // function isUnique(str) {
 //   return new Set(str).size === str.length;
 // }
 // console.log(isUnique("abcb"));
-
+//
+//
 // const arr1 = [[1], [[[[4]]]], [[7]]];
-
 // function flatter(arr) {
 //   const newArr = [];
-
 //   for (let i = 0; i < arr.length; i++) {
 //     if (Array.isArray(arr[i])) {
 //       let flat = flatter(arr[i]);
-
 //       for (let j = 0; j < flat.length; j++) {
 //         newArr.push(flat[j]);
 //       }
@@ -30,11 +27,11 @@
 //       newArr.push(arr[i]);
 //     }
 //   }
-
 //   return newArr;
 // }
 // console.log(flatter(arr1));
-
+//
+//
 // function removeDubls(str) {
 //   return [...new Set(str)].join("");
 // }
@@ -5693,62 +5690,120 @@
 // Уровень 9.10 задачника JavaScript
 // №1
 // Дана таблица. Юзер кликает по очереди на две ячейки, выделяя их. Сделайте так, чтобы красным цветом выделились все ячейки, расположенные по порядку между теми, на которые кликнул юзер.
+// const tds = document.querySelectorAll("td");
+// let tdFrom = 0;
+// let tdTo = 0;
+// const arr = [];
+// for (const td of tds) {
+//   td.addEventListener("click", function () {
+//     arr.push(Number(this.textContent));
+//     for (const td of tds) {
+//       td.addEventListener("click", function () {
+//         arr.push(Number(this.textContent));
+//         arr.pop();
+//         console.log(arr);
+//         const fromNum = maxToMinNums(arr)[0] - 1;
+//         const toNum = maxToMinNums(arr)[1] - 1;
+//         for (let i = fromNum; i <= toNum; i++) {
+//           tds[i].style.backgroundColor = "red";
+//         }
+//       });
+//     }
+//   });
+// }
+// function maxToMinNums(arr) {
+//   arr.sort(function (a, b) {
+//     return a - b;
+//   });
+//   return arr;
+// }
 
 // №2
 // Напишите код, который определит максимальный уровень вложенности многомерного массива.
+// const arr1 = [4, [5, [6, [7]]]];
+// function func(arr) {
+//   if (!Array.isArray(arr)) {
+//     return 0;
+//   }
+//   let i = 0;
+//   for (const elem of arr) {
+//     if (Array.isArray(elem)) {
+//       const x = func(elem) + 1;
+//       if (x > i) {
+//         i = x;
+//       }
+//     }
+//   }
+//   return i;
+// }
+// console.log(func(arr1));
 
 // №3
 // Дан список каких-то данных за определенные даты, хранящийся в следующей структуре:
 // let data = [
-// 	{
-// 		year:  2019,
-// 		month: 11,
-// 		day: 20,
-// 		data: ['массив с данными']
-// 	},
-// 	{
-// 		year:  2019,
-// 		month: 11,
-// 		day: 21,
-// 		data: ['массив с данными']
-// 	},
-// 	{
-// 		year:  2019,
-// 		month: 12,
-// 		day: 25,
-// 		data: ['массив с данными']
-// 	},
-// 	{
-// 		year:  2019,
-// 		month: 12,
-// 		day: 26,
-// 		data: ['массив с данными']
-// 	},
-// 	{
-// 		year:  2020,
-// 		month: 10,
-// 		day: 29,
-// 		data: ['массив с данными']
-// 	},
-// 	{
-// 		year:  2020,
-// 		month: 10,
-// 		day: 30,
-// 		data: ['массив с данными']
-// 	},
-// 	{
-// 		year:  2020,
-// 		month: 11,
-// 		day: 19,
-// 		data: ['массив с данными']
-// 	},
-// 	{
-// 		year:  2020,
-// 		month: 11,
-// 		day: 20,
-// 		data: ['массив с данными']
-// 	},
+//   {
+//     year: 2019,
+//     month: 11,
+//     day: 20,
+//     data: ["массив с данными"],
+//   },
+//   {
+//     year: 2019,
+//     month: 11,
+//     day: 21,
+//     data: ["массив с данными"],
+//   },
+//   {
+//     year: 2019,
+//     month: 12,
+//     day: 25,
+//     data: ["массив с данными"],
+//   },
+//   {
+//     year: 2019,
+//     month: 12,
+//     day: 26,
+//     data: ["массив с данными"],
+//   },
+//   {
+//     year: 2020,
+//     month: 10,
+//     day: 29,
+//     data: ["массив с данными"],
+//   },
+//   {
+//     year: 2020,
+//     month: 10,
+//     day: 30,
+//     data: ["массив с данными"],
+//   },
+//   {
+//     year: 2020,
+//     month: 11,
+//     day: 19,
+//     data: ["массив с данными"],
+//   },
+//   {
+//     year: 2020,
+//     month: 11,
+//     day: 20,
+//     data: ["массив с данными"],
+//   },
+// ];
+
+// let transformedData = {};
+// for (const item of data) {
+//   const { year, month, day, data } = item;
+//   if (!transformedData[year]) {
+//     transformedData[year] = {};
+//   }
+//   if (!transformedData[year][month]) {
+//     transformedData[year][month] = {};
+//   }
+//   transformedData[year][month][day] = data;
 // }
+// console.log(transformedData);
+
 // Напишите код, которой переделает структуру данных в структуру вида:
 // {
 // 	год1: {
@@ -5777,6 +5832,134 @@
 // 	}
 // }
 
+// Уровень 10.1 задачника JavaScript
+// №1
+// Сделайте функцию, которая параметром будет принимать английское существительное в единственном числе и возвращать его во множественном числе.
+
+// №2
+// Сделайте так, чтобы при клике на любое место окна браузера в месте клика появлялся порядковый номер этого клика.
+// document.body.clientHeight;
+// let clickNum = 0;
+// window.addEventListener("click", function (event) {
+//   const div = document.createElement("div");
+//   div.textContent = clickNum;
+//   clickNum++;
+//   div.style.position = "absolute";
+//   div.style.top = event.clientY + "px";
+//   div.style.left = event.clientX + "px";
+//   document.body.appendChild(div);
+// });
+
+// №3
+// Дан текст со знаками препинаний:
+// 'aaa bbb, ccc. Xxx - eee bbb, kkk!'
+// Получите массив слов из такого текста.
+// const str = "aaa bbb, ccc. Xxx - eee bbb, kkk!";
+// const arr = str.split(/[ \.,;?!-]+/);
+// console.log(arr);
+
+// №4
+// Дан инпут. По мере ввода в него числа он должен отделять тройки чисел пробелами.
+// const input = document.querySelector("input");
+// let i = 1;
+// input.addEventListener("input", function () {
+//   if (i % 3 === 0) {
+//     input.value += " ";
+//   }
+//   i++;
+// });
+
+// №5
+// Даны два числа. Выведите на экран процесс умножения этих чисел в столбик, как в школе.
+
+// №6
+// Сделайте блок, который будет выезжать сверху экрана по нажатию на кнопку.
+// const button = document.querySelector("button");
+// const block = document.querySelector(".block");
+// button.addEventListener("click", function () {
+//   block.classList.toggle("hidden");
+// });
+
+// Уровень 10.2 задачника JavaScript
+// №1
+// Дана таблица. При клике на ячейку она активируется каким-нибудь цветом. Сделайте так, чтобы ячейки вокруг активированной не активировались.
+
+// №2
+// Дана таблица. Сделайте так, чтобы каждую секунду активировалась случайная ячейка таблицы. Одна ячейка не может быть активной два раза подряд.
+// const button = document.querySelector("button");
+// let i = 0;
+// button.addEventListener("click", function () {
+//   const tds = document.querySelectorAll("td");
+//   const arr = makeArr(0, tds.length);
+//   shuffleArray(arr);
+//   let i = 0;
+//   const Timer = setInterval(function () {
+//     tds[arr[i]].style.backgroundColor = "red";
+//     i++;
+//     if (i >= tds.length) {
+//       clearInterval(Timer);
+//     }
+//   }, 300);
+// });
+// function makeArr(min, max) {
+//   const arr = [];
+//   for (let i = min; i < max; i++) {
+//     arr.push(i);
+//   }
+//   return arr;
+// }
+// function shuffleArray(arr) {
+//   for (let i = arr.length - 1; i > 0; i--) {
+//     const j = Math.floor(Math.random() * (i + 1));
+//     [arr[i], arr[j]] = [arr[j], arr[i]];
+//   }
+// }
+
+// №3
+// Дан текстареа. Как известно, его размер можно менять, потянув за уголок. Сделайте так, чтобы можно было изменить размер этого текстареа, а затем обновить страницу - и изменения не должны пропасть.
+
+// №4
+// Дан инпут и кнопка. По клику на кнопку выведите список список ul всех избыточных чисел из промежутка, заданном значениями инпутов.
+
+// №5
+// Дана квадратная HTML таблица произвольного размера. По нажатию на кнопку заполните половину таблицу следующим образом:
+// const trs = document.querySelectorAll("tr");
+// let x = 0;
+// for (let i = 0; i < trs.length; i++) {
+//   const tds = trs[i].querySelectorAll("td");
+//   for (let j = 0; j < trs.length - x; j++) {
+//     tds[j].textContent = "+";
+//   }
+//   x++;
+// }
+
+// Уровень 10.3 задачника JavaScript
+// №1
+// Сделайте инпут, в который можно ввести только числа. Остальные символы не должны вводится в инпут.
+
+// №2
+// Дан блок. По клику на блок покажите всплывающую подсказку с некоторым достаточно длинным текстом. Покажите подсказку или сверху или снизу с учетом того, чтобы она целиком поместилась на экране и не ушла под прокрутку.
+
+// №3
+// Дан массив из шести цифр. Проверьте, можно ли собрать из этих цифр счастливый билет.
+
+// №4
+// Дана прямоугольная таблица. По нажатию на кнопку покрасьте ячейки одной диагонали в красный цвет, а второй диагонали - в зеленый.
+
+// №5
+// Напишите код, который будет генерировать пароль заданного размера. Пароль обязательно должен будет содержать маленькую и большую буквы, цифру и какой-то специальный символ.
+
+// №6
+// Дано окно браузера. Сделайте так, чтобы элементы, целиком находящиеся в левой половине окна покрасились в зеленый цвет, целиком находящиеся в правой половине окна - в синий, а находящиеся и там, и там - в красный.
+
+// №7
+// Даны два числа. Выведите на экран процесс деления этих чисел в столбик, как в школе.
+
+// №8
+// Дана строка, содержащая два числа и математическую операцию между ними:
+// '10 + 20'
+// Напишите код, который вычислит результат записанной математической операции.
+
 //
 //
 //
@@ -5788,3 +5971,40 @@
 // button.addEventListener("click", function () {
 //   //
 // });
+
+// function func(arr) {
+//   const newAarr = [];
+//   for (const obj of arr) {
+//     newAarr.push(obj.title);
+//   }
+//   return newAarr;
+// }
+
+// function func(arr, name) {
+//   for (const obj of arr) {
+//     if (obj.title === name) {
+//       return obj;
+//     }
+//   }
+//   return "no this film";
+// }
+
+// function func(arr) {
+//   const newAarr = [];
+//   for (const obj of arr) {
+//     if (obj.adult) {
+//       newAarr.push(obj);
+//     }
+//   }
+//   return newAarr;
+// }
+
+// function func(arr) {
+//   const newAarr = [];
+//   for (const obj of arr) {
+//     if (!obj.adult) {
+//       newAarr.push(obj);
+//     }
+//   }
+//   return newAarr;
+// }
