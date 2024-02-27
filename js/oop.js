@@ -919,3 +919,17 @@
 // console.log(text.numberSpaces());
 // console.log(text.arrWords());
 // console.log(text.arrTexts());
+
+//=====================================
+//GOiT
+//=====================================
+
+// class User {
+//   constructor(name, email) {
+//     this.name = name;
+//     this.email = email;
+//   }
+// }
+// const mango = new User("Mango", "vsfs@wvwrv");
+// console.log(mango);
+//---------------------------------
